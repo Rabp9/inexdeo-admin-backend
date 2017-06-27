@@ -1,0 +1,38 @@
+<form novalidate angular-validator angular-validator-submit="saveTipoSugerencia(tipo_sugerencia, 'btnSaveTipoSugerencia')" name="tipoSugerenciasAdd" angular-validator-quiet>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Nuevo Tipo de Sugerencia</h4>
+    </div>
+    <div class="modal-body"> 
+        <div class="form-group">
+            <label for="txtDescripcion">Descripción</label>
+            <input id="txtDescripcion" class="form-control" type="text" ng-model="tipo_sugerencia.descripcion"
+                name="infoDescripcion" required required-message="'Este campo es requerido'" validate-on="blur"/>
+        </div>
+        <div class="form-group">
+            <label for="txtEmailNuevo">Email nuevo</label>
+            <div class="input-group">
+                <input id="txtEmailNuevo" class="form-control" type="text" ng-model="email_nuevo" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" ng-click="addEmail(email_nuevo)">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
+            </div>
+            <div ui-sortable ng-model="tipo_sugerencia.detalle_sugerencias">
+                <p class="input-group" ng-repeat="detalle_sugerencia in tipo_sugerencia.detalle_sugerencias"
+                    style="padding: 5px; cursor: move;">
+                    <input type="text" class="form-control" ng-model="detalle_sugerencia.email"
+                        name="detalleSugerenciaEmail{{ $index }}" required required-message="'Este campo es requerido'" validate-on="blur"  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-warning" ng-click="removeEmail(detalle_sugerencia)">X</button>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="cancel()">Cerrar</button>
+        <button id="btnSaveTipoSugerencia" class="btn btn-success" type="submit">Guardar Tipo de Sugerencia</button>
+    </div>
+</form>
