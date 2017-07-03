@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name tuplastAdminApp.filter:menuFilter
+ * @name inexdeo.filter:menuFilter
  * @function
  * @description
  * # menuFilter
- * Filter in the tuplastAdminApp.
+ * Filter in the inexdeo.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .filter('menuFilter', function () {
     return function (menu) {
         switch (menu) {

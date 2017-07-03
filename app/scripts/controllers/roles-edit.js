@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:RolesEditCtrl
+ * @name inexdeoAdminApp.controller:RolesEditCtrl
  * @description
  * # RolesEditCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('RolesEditCtrl', function ($scope, rol, $uibModalInstance, RolesService) {
     $scope.rol = $.extend(true, {}, rol);
     

@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:SlidesAddCtrl
+ * @name inexdeoAdminApp.controller:SlidesAddCtrl
  * @description
  * # SlidesAddCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('SlidesAddCtrl', function ($scope, $uibModalInstance, SlidesService) {
     $scope.slide = {};
-    $scope.tmp_path = angular.module('tuplastAdminApp').path_location + 'tmp'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp'; 
     $scope.loading = false;
     $scope.slide.color_bg = '#74c15c';
     $scope.slide.color = '#ffffff';

@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name tuplastAdminApp
+ * @name inexdeoAdminApp
  * @description
- * # tuplastAdminApp
+ * # inexdeoAdminApp
  *
  * Main module of the application.
  */
 angular
-.module('tuplastAdminApp', [
+.module('inexdeoAdminApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -117,7 +117,7 @@ angular
         });
 })
 .run(function($rootScope, $route, $cookies, $location, UsersService, $window, EnvService) {
-    angular.module('tuplastAdminApp').path_location = EnvService.getHost();
+    angular.module('inexdeoAdminApp').path_location = EnvService.getHost();
     $rootScope.path_location = EnvService.getHost();
     
     $('#dvMessageRoot').removeClass('dvHidden');
@@ -132,9 +132,9 @@ angular
     });
     $rootScope.$route = $route;
     
-    if ($cookies.get('tuplast-token')) {
+    if ($cookies.get('inexdeo-token')) {
         $rootScope.logged = true;
-        $rootScope.user = $cookies.getObject('tuplast-user');
+        $rootScope.user = $cookies.getObject('inexdeo-user');
     } else {
         $rootScope.logged = false;
     }
@@ -194,8 +194,8 @@ angular
     
     $rootScope.logout = function() {
         if (confirm('¿Está seguro de cerrar sesión?')) {
-            $cookies.remove('tuplast-user');
-            $cookies.remove('tuplast-token');
+            $cookies.remove('inexdeo-user');
+            $cookies.remove('inexdeo-token');
             $rootScope.user = undefined;
             $('#topbar-wrapper').addClass('ng-hide');
             $('#wrapper').addClass('inLogin');

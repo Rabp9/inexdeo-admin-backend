@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:UsersEditCtrl
+ * @name inexdeoAdminApp.controller:UsersEditCtrl
  * @description
  * # UsersEditCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('UsersEditCtrl', function ($scope, user, $uibModalInstance, UsersService, RolesService) {
     $scope.user = $.extend(true, {}, user);
     $scope.loading = true;

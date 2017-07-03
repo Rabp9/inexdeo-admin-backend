@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.convocatoriasService
+ * @name inexdeoAdminApp.convocatoriasService
  * @description
  * # convocatoriasService
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('ConvocatoriasService', function($resource, EnvService) {
     return $resource(EnvService.getHost() + 'convocatorias/:id.json', {}, {
         preview: {

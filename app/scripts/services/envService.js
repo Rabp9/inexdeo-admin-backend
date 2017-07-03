@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.envService
+ * @name inexdeoAdminApp.envService
  * @description
  * # envService
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('EnvService', function () {
     return {
         getHost: function() {

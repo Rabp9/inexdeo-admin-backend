@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.obrasService
+ * @name inexdeoAdminApp.obrasService
  * @description
  * # obrasService
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('ObrasService', function($resource, EnvService) {
     return $resource(EnvService.getHost() + 'obras/:id.json', {}, {
         preview: {

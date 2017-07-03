@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:PoliticasAddCtrl
+ * @name inexdeoAdminApp.controller:PoliticasAddCtrl
  * @description
  * # PoliticasAddCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('PoliticasAddCtrl', function ($scope, PoliticasService, $uibModalInstance) {
     $scope.politica = {};
-    $scope.tmp_path = angular.module('tuplastAdminApp').path_location + 'tmp'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp'; 
     $scope.loading = false;
     
     $scope.cancel = function() {

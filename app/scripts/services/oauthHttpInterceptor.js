@@ -2,16 +2,16 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.oauthHttpInterceptor
+ * @name inexdeoAdminApp.oauthHttpInterceptor
  * @description
  * # oauthHttpInterceptor
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('oauthHttpInterceptor', function ($cookies) {
     return {
         request: function (config) {
-            config.headers.Authorization = 'Bearer ' + $cookies.get('tuplast-token');
+            config.headers.Authorization = 'Bearer ' + $cookies.get('inexdeo-token');
             return config;
         }
     };

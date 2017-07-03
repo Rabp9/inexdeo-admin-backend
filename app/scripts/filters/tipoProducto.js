@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name tuplastAdminApp.filter:tipoProducto
+ * @name inexdeo.filter:tipoProducto
  * @function
  * @description
  * # tipoProducto
- * Filter in the tuplastAdminApp.
+ * Filter in the inexdeo.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .filter('tipoProducto', function () {
     return function (tipo) {
         switch(tipo) {

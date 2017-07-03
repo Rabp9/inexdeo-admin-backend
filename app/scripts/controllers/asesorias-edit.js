@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:AsesoriasEditCtrl
+ * @name inexdeoAdminApp.controller:AsesoriasEditCtrl
  * @description
  * # AsesoriasEditCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('AsesoriasEditCtrl', function ($scope, asesoria, $uibModalInstance, AsesoriasService) {
     $scope.asesoria = $.extend(true, {}, asesoria);
-    $scope.tmp_path = angular.module('tuplastAdminApp').path_location + 'img' + '/asesorias/'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/asesorias/'; 
     
     $scope.tinymceAsesoriasOptions = {
         toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | fontsizeselect | fontselect ",

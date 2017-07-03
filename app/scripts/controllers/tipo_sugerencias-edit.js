@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:TipoSugerenciasEditCtrl
+ * @name inexdeoAdminApp.controller:TipoSugerenciasEditCtrl
  * @description
  * # TipoSugerenciasEditCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('TipoSugerenciasEditCtrl', function ($scope, tipo_sugerencia, $uibModalInstance, TipoSugerenciasService) {
     $scope.tipo_sugerencia = $.extend(true, {}, tipo_sugerencia);
     

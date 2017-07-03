@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:PoliticasEditCtrl
+ * @name inexdeoAdminApp.controller:PoliticasEditCtrl
  * @description
  * # PoliticasEditCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('PoliticasEditCtrl', function ($scope, politica, $uibModalInstance, PoliticasService) {
     $scope.politica = $.extend(true, {}, politica);
-    $scope.tmp_path = angular.module('tuplastAdminApp').path_location + 'img/politicas'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img/politicas'; 
     $scope.url_preview = politica.url;
     $scope.loading = false;
     
@@ -48,7 +48,7 @@ angular.module('tuplastAdminApp')
     
     $scope.preview = function(image, errFiles) {
         $scope.loading = true;
-        $scope.tmp_path = angular.module('tuplastAdminApp').path_location + 'tmp'; 
+        $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp'; 
         var fd = new FormData();
         fd.append('file', image);
         

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:ClientesCtrl
+ * @name inexdeoAdminApp.controller:ClientesCtrl
  * @description
  * # ClientesCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('ClientesCtrl', function ($scope, ClientesService, $uibModal) {
     $scope.loading = true;
     ClientesService.getAdmin(function(data) {

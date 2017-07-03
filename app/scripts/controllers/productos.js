@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:ProductosCtrl
+ * @name inexdeoAdminApp.controller:ProductosCtrl
  * @description
  * # ProductosCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('ProductosCtrl', function ($scope, ProductosService, $uibModal) {
     $scope.loading = true;
     ProductosService.getAdmin(function(data) {
@@ -68,7 +68,13 @@ angular.module('tuplastAdminApp')
         
         if (confirm('¿Desea eliminar ese producto?')) {
             ProductosService.remove({id: cliente.id}, function(data) {
-                $scope.message = data.message;
+                $scope.message = data.message; 
+                $scope.loading = true;
+                $scope.productos = [];
+                ProductosService.getAdmin(function(data) {
+                    $scope.productos = data.productos;
+                    $scope.loading = false;
+                });
             });
         }
         

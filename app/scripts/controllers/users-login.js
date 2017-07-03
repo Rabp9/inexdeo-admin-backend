@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:UsersLoginCtrl
+ * @name inexdeoAdminApp.controller:UsersLoginCtrl
  * @description
  * # UsersLoginCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('UsersLoginCtrl', function ($scope, UsersService, $uibModal, $cookies, $location, $rootScope) {
     
     $scope.loginUser = function(user, boton) {
@@ -19,8 +19,8 @@ angular.module('tuplastAdminApp')
             if (!data.user) {
                 $scope.message = data.message;
             } else {
-                $cookies.putObject('tuplast-user', data.user);
-                $cookies.put('tuplast-token', data.token);
+                $cookies.putObject('inexdeo-user', data.user);
+                $cookies.put('inexdeo-token', data.token);
                 $rootScope.user = data.user;
                 $('#wrapper').removeClass('inLogin');
                 $location.path('/');

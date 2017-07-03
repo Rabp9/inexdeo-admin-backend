@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:ConvocatoriasEditCtrl
+ * @name inexdeoAdminApp.controller:ConvocatoriasEditCtrl
  * @description
  * # ConvocatoriasEditCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('ConvocatoriasEditCtrl', function ($scope, convocatoria, $uibModalInstance, ConvocatoriasService) {
     $scope.convocatoria = $.extend(true, {}, convocatoria);
     $scope.documentacion_preview = $scope.convocatoria.documentacion;

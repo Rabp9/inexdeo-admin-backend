@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.pagesService
+ * @name inexdeoAdminApp.pagesService
  * @description
  * # pagesService
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('PagesService', function($resource, EnvService) {
     return $resource(EnvService.getHost() + 'pages/:id.json', {}, {
         upload: {

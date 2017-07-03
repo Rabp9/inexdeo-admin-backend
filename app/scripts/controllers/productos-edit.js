@@ -2,19 +2,19 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:ProductosEditCtrl
+ * @name inexdeoAdminApp.controller:ProductosEditCtrl
  * @description
  * # ProductosEditCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('ProductosEditCtrl', function ($scope, producto, $uibModalInstance, 
     ProductosService, $q, PagesService) {
         
     $scope.loading = false;
     $scope.producto = {};
     var start = 0;
-    $scope.tmp_path = angular.module('tuplastAdminApp').path_location + 'img' + '/paginas/'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/paginas/'; 
     
     $scope.tinymceProductosOptions = {
         toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | fontsizeselect | fontselect ",
@@ -43,7 +43,7 @@ angular.module('tuplastAdminApp')
             start = $scope.producto.producto_images.length;
             angular.forEach($scope.producto.producto_images, function(value, key) {
                 $scope.images.push({
-                    url: angular.module('tuplastAdminApp').path_location + 'img' + '/' + 'productos' + '/' + value.url,
+                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'productos' + '/' + value.url,
                     id: value.id,
                     deletable : true,
                     title: value.title
@@ -68,7 +68,7 @@ angular.module('tuplastAdminApp')
     $scope.images = [];
     $scope.methods = {};
     $scope.title_images = [];
-    var tmp_path = angular.module('tuplastAdminApp').path_location + 'tmp' + '/';
+    var tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
     
     $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');

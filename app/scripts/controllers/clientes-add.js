@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:ClientesAddCtrl
+ * @name inexdeoAdminApp.controller:ClientesAddCtrl
  * @description
  * # ClientesAddCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('ClientesAddCtrl', function ($scope, $uibModalInstance, ClientesService, NgMap) {
     $scope.cliente = {};
     $scope.loading = false;

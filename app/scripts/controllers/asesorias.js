@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:AsesoriasCtrl
+ * @name inexdeoAdminApp.controller:AsesoriasCtrl
  * @description
  * # AsesoriasCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('AsesoriasCtrl', function ($scope, AsesoriasService, $uibModal) {
     $scope.loading = true;
     

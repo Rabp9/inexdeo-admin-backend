@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:InfoGeneralEditCtrl
+ * @name inexdeoAdminApp.controller:InfoGeneralEditCtrl
  * @description
  * # InfoGeneralEditCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('InfoGeneralEditCtrl', function ($scope, info, $uibModalInstance, InfosService) {
     $scope.info = $.extend(true, {}, info);
 

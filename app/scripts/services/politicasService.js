@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.politicas
+ * @name inexdeoAdminApp.politicas
  * @description
  * # politicas
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('PoliticasService', function($resource, EnvService) {
     return $resource(EnvService.getHost() + 'politicas/:id.json', {}, {
         preview: {

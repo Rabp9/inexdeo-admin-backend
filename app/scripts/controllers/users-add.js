@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:UsersAddCtrl
+ * @name inexdeoAdminApp.controller:UsersAddCtrl
  * @description
  * # UsersAddCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('UsersAddCtrl', function ($scope, UsersService, RolesService, $uibModalInstance) {
     $scope.user = {};
     

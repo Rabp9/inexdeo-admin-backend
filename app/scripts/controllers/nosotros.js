@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:NosotrosCtrl
+ * @name inexdeoAdminApp.controller:NosotrosCtrl
  * @description
  * # NosotrosCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('NosotrosCtrl', function ($scope, InfosService, PoliticasService, $uibModal) {
     $scope.quienesSomos = {};
     var dataSearch = ['nuestraHistoria', 'vision', 'mision', 'valor1', 'valor2', 'valor3',

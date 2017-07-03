@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:TipoSugerenciasAddCtrl
+ * @name inexdeoAdminApp.controller:TipoSugerenciasAddCtrl
  * @description
  * # TipoSugerenciasAddCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('TipoSugerenciasAddCtrl', function ($scope, $uibModalInstance, TipoSugerenciasService) {
     $scope.tipo_sugerencia = {};
     $scope.tipo_sugerencia.detalle_sugerencias = [];

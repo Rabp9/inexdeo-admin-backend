@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:SlidesEditCtrl
+ * @name inexdeoAdminApp.controller:SlidesEditCtrl
  * @description
  * # SlidesEditCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('SlidesEditCtrl', function ($scope, slide, $uibModalInstance, SlidesService) {
     $scope.slide = $.extend(true, {}, slide);
-    $scope.tmp_path = angular.module('tuplastAdminApp').path_location + 'img/slides'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img/slides'; 
     $scope.url_preview = slide.url;
     $scope.loading = false;
     
@@ -48,7 +48,7 @@ angular.module('tuplastAdminApp')
     
     $scope.preview = function(image, errFiles) {
         $scope.loading = true;
-        $scope.tmp_path = angular.module('tuplastAdminApp').path_location + 'tmp'; 
+        $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp'; 
         var fd = new FormData();
         fd.append('file', image);
         

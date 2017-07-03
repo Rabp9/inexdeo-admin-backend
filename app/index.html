@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="tuplastAdminApp" lang="ES">
+<html ng-app="inexdeoAdminApp" lang="ES">
 <head>
     <meta charset="utf-8">
     <title ng-bind="title + ' - In Excelsis Deo Admin'">In Excelsis Deo</title>
@@ -29,7 +29,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a class="navbar-brand" ng-href="#/">
-                        <img class="img-responsive" src="images/logo.jpg" alt="Tuplast"/>
+                        <img class="img-responsive" src="images/logo.jpg" alt="In Excelsis Deo"/>
                     </a>
                 </li>
                 <li>
@@ -39,7 +39,13 @@
                     <a ng-class="{active: $route.current.controllerAs === 'infoGeneral'}" ng-href="#/info-general">Información General</a>
                 </li>
                 <li>
-                    <a ng-class="{active: $route.current.controllerAs === 'slider'}" ng-href="#/slider">Slider</a>
+                    <a ng-class="{active: $route.current.controllerAs === 'productos'}" ng-href="#/productos">Productos</a>
+                </li>
+                <li>
+                    <a ng-class="{active: $route.current.controllerAs === 'servicios'}" ng-href="#/servicios">Servicios</a>
+                </li>
+                <li>
+                    <a ng-class="{active: $route.current.controllerAs === 'proyectos'}" ng-href="#/proyectos">Proyectos</a>
                 </li>
                 <li>
                     <a ng-class="{active: $route.current.controllerAs === 'roles'}" ng-href="#/roles">Roles</a>
@@ -64,7 +70,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" ng-href="#/">
-                        <img class="logo-brand img-responsive" src="images/logo.png" alt="Tuplast"/>
+                        <img class="logo-brand img-responsive" src="images/logo.png" alt="In Excelsis Deo"/>
                     </a>
               </div>
 
@@ -75,8 +81,14 @@
                         <li ng-class="{active: $route.current.controllerAs === 'infoGeneral'}">
                             <a ng-href="#/info-general">Información General</a>
                         </li>
-                        <li ng-class="{active: $route.current.controllerAs === 'slider'}">
-                            <a ng-href="#/slider">Slider</a>
+                        <li ng-class="{active: $route.current.controllerAs === 'productos'}">
+                            <a ng-href="#/productos">Productos</a>
+                        </li>
+                        <li ng-class="{active: $route.current.controllerAs === 'servicios'}">
+                            <a ng-href="#/servicios">Servicios</a>
+                        </li>
+                        <li ng-class="{active: $route.current.controllerAs === 'proyectos'}">
+                            <a ng-href="#/proyectos">Proyectos</a>
                         </li>
                         <li ng-class="{active: $route.current.controllerAs === 'roles'}">
                             <a ng-href="#/roles">Roles</a>

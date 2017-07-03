@@ -2,16 +2,16 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:ObrasAddCtrl
+ * @name inexdeoAdminApp.controller:ObrasAddCtrl
  * @description
  * # ObrasAddCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('ObrasAddCtrl', function ($scope, ObrasService, $uibModalInstance) {
     $scope.obra = {};
     $scope.methods = {};
-    var tmp_path = angular.module('tuplastAdminApp').path_location + 'tmp' + '/';
+    var tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
     $scope.loading = false;
     
     $scope.cancel = function() {

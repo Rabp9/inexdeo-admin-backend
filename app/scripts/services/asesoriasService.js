@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.asesoriasService
+ * @name inexdeoAdminApp.asesoriasService
  * @description
  * # asesoriasService
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('AsesoriasService', function($resource, EnvService) {
     return $resource(EnvService.getHost() + 'asesorias/:id.json', {}, {
         upload: {

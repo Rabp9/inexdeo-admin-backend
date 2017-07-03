@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:MainCtrl
+ * @name inexdeoAdminApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('MainCtrl', function () {
     
 });

@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:PagesAddCtrl
+ * @name inexdeoAdminApp.controller:PagesAddCtrl
  * @description
  * # PagesAddCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('PagesAddCtrl', function ($scope, $uibModalInstance, PagesService) {
     $scope.page = {};
-    $scope.tmp_path = angular.module('tuplastAdminApp').path_location + 'img' + '/paginas/'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/paginas/'; 
     $scope.menus = [
         {id: 'NS', description: 'Nosotros'},
         {id: 'PY', description: 'Proyectos'}, 

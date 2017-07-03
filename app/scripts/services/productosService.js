@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.productosService
+ * @name inexdeoAdminApp.productosService
  * @description
  * # productosService
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('ProductosService', function ($resource, EnvService) {
     return $resource(EnvService.getHost() + 'productos/:id.json', {}, {
         preview: {
@@ -24,19 +24,21 @@ angular.module('tuplastAdminApp')
             method: 'POST',
             url: EnvService.getHost() + 'productos/deleteImage/.json'
         },
-        getTreeList: {
-            method: 'GET',
-            url: EnvService.getHost() + 'productos/getTreeList/:spacer.json'
-        },
         previewBrochure: {
             method: 'POST',
             url: EnvService.getHost() + 'productos/previewBrochure/.json',
             transformRequest: angular.identity,
             headers: { 'Content-Type': undefined }
         },
+        previewPortada: {
+            method: 'POST',
+            url: EnvService.getHost() + 'productos/previewPortada/.json',
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+        },
         remove: {
             method: 'POST',
             url: EnvService.getHost() + 'productos/remove/.json'
-        },
+        }
     });
 });

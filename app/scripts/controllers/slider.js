@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:SliderCtrl
+ * @name inexdeoAdminApp.controller:SliderCtrl
  * @description
  * # SliderCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('SliderCtrl', function ($scope, SlidesService, $uibModal) {
     $scope.loading = true;
     SlidesService.getAdmin(function(data) {

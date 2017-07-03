@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:ConvocatoriasCtrl
+ * @name inexdeoAdminApp.controller:ConvocatoriasCtrl
  * @description
  * # ConvocatoriasCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('ConvocatoriasCtrl', function ($scope, ConvocatoriasService, $uibModal) {
     $scope.loading = true;
     ConvocatoriasService.getAdmin(function(data) {

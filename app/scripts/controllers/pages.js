@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:PagesCtrl
+ * @name inexdeoAdminApp.controller:PagesCtrl
  * @description
  * # PagesCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('PagesCtrl', function ($scope, PagesService, $uibModal) {
     $scope.loading = true;
     

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.clientesService
+ * @name inexdeoAdminApp.clientesService
  * @description
  * # clientesService
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('ClientesService', function($resource, EnvService) {
     return $resource(EnvService.getHost() + 'clientes/:id.json', {}, {
         preview: {

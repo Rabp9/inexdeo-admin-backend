@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.TipoSugerenciasService
+ * @name inexdeoAdminApp.TipoSugerenciasService
  * @description
  * # TipoSugerenciasService
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('TipoSugerenciasService', function($resource, EnvService) {
     return $resource(EnvService.getHost() + 'tipo_sugerencias/:id.json', {}, {
         getAdmin: {

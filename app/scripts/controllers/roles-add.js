@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:RolesAddCtrl
+ * @name inexdeoAdminApp.controller:RolesAddCtrl
  * @description
  * # RolesAddCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('RolesAddCtrl', function ($scope, RolesService, $uibModalInstance, ControllersService) {
     $scope.rol = {};
     $scope.rol.controller_roles = [];

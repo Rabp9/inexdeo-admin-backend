@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name tuplastAdminApp.controller:ObrasEditCtrl
+ * @name inexdeoAdminApp.controller:ObrasEditCtrl
  * @description
  * # ObrasEditCtrl
- * Controller of the tuplastAdminApp
+ * Controller of the inexdeoAdminApp
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .controller('ObrasEditCtrl', function ($scope, obra, $uibModalInstance, ObrasService) {
     $scope.loading = false;
     // $scope.obra = $.extend(true, {}, obra);
@@ -15,7 +15,7 @@ angular.module('tuplastAdminApp')
         $scope.obra = data.obra;
         angular.forEach($scope.obra.obra_images, function(value, key) {
             $scope.images.push({
-                url: angular.module('tuplastAdminApp').path_location + 'img' + '/' + 'obras' + '/' + value.url,
+                url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'obras' + '/' + value.url,
                 id: value.id,
                 deletable : true
             });
@@ -24,7 +24,7 @@ angular.module('tuplastAdminApp')
     
     $scope.images = [];
     $scope.methods = {};
-    var tmp_path = angular.module('tuplastAdminApp').path_location + 'tmp' + '/';
+    var tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
     
     $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');

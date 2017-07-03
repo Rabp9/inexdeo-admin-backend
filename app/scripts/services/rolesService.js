@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name tuplastAdminApp.rolesService
+ * @name inexdeoAdminApp.rolesService
  * @description
  * # rolesService
- * Factory in the tuplastAdminApp.
+ * Factory in the inexdeoAdminApp.
  */
-angular.module('tuplastAdminApp')
+angular.module('inexdeoAdminApp')
 .factory('RolesService', function ($resource, EnvService) {
     return $resource(EnvService.getHost() + 'roles/:id.json', {}, {
         getAdmin: {
