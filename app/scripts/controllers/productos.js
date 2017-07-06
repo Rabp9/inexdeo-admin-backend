@@ -10,6 +10,7 @@
 angular.module('inexdeoAdminApp')
 .controller('ProductosCtrl', function ($scope, ProductosService, $uibModal) {
     $scope.loading = true;
+    
     ProductosService.getAdmin(function(data) {
         $scope.productos = data.productos;
         $scope.loading = false;
