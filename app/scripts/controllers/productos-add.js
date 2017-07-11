@@ -20,7 +20,7 @@ angular.module('inexdeoAdminApp')
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.saveProducto = function(producto, boton, urls_preview, brochure_preview, title_images, portada_preview) {
+    $scope.saveProducto = function(producto, boton, urls_preview, brochure_preview, title_images, portada_preview, portada) {
         $('#' + boton).text('Guardando...');
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
@@ -37,6 +37,9 @@ angular.module('inexdeoAdminApp')
         }
         if (portada_preview !== null) {
             producto.img_portada = portada_preview;
+        }
+        if (portada !== null) {
+            producto.portada = portada;
         }
         ProductosService.save(producto, function(data) {
             $('#' + boton).removeClass('disabled');
