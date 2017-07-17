@@ -34,9 +34,14 @@
             <span ng-hide="portada_preview === undefined || portada_preview === null">Portada cargada correctamente</span>
             <span ng-show="loading">Cargando...</span>
             <span ng-show="!loading && portada_preview === null">No fue posible cargar la Portada</span>
-            <span ng-show="!loading && portada_preview !== null"><!-- si la imagen cargo entonces definimos si se muestra o no-->
-                <input type="checkbox" ng-model="producto.portada">
-            </span>
+            <span ng-hide="portada_preview === undefined || portada_preview === null"><!-- si la imagen cargo entonces definimos si se muestra o no-->
+        </div>
+        <div class="form-group" ng-hide="portada_preview === undefined || portada_preview === null">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="producto.portada"> Mostrar Portada en Lista
+                </label>
+            </div>
         </div>
         <div class="form-group">
             <label for="flImagenesProductos">Imágenes</label>

@@ -15,16 +15,17 @@ angular.module('inexdeoAdminApp')
     var tmp_path = $scope.tmp_path;
     $scope.loading = false;
     $scope.title_images = [];
+    $scope.producto.portada = false;
         
     $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.saveProducto = function(producto, boton, urls_preview, brochure_preview, title_images, portada_preview, portada) {
+    $scope.saveProducto = function(producto, boton, urls_preview, brochure_preview, title_images, portada_preview) {
         $('#' + boton).text('Guardando...');
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
-        
+        console.log(producto);
         producto.producto_images = [];
         angular.forEach(urls_preview, function(value, key) {
             producto.producto_images.push({
@@ -37,9 +38,6 @@ angular.module('inexdeoAdminApp')
         }
         if (portada_preview !== null) {
             producto.img_portada = portada_preview;
-        }
-        if (portada !== null) {
-            producto.portada = portada;
         }
         ProductosService.save(producto, function(data) {
             $('#' + boton).removeClass('disabled');
