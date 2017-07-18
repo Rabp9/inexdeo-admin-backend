@@ -11,10 +11,13 @@ angular.module('inexdeoAdminApp')
 .controller('ProductosCtrl', function ($scope, ProductosService, $uibModal) {
     $scope.loading = true;
     
-    ProductosService.getAdmin(function(data) {
-        $scope.productos = data.productos;
-        $scope.loading = false;
-    });
+    function getProductos() {
+        ProductosService.getAdmin(function(data) {
+            $scope.productos = data.productos;
+            $scope.loading = false;
+        });
+    }
+    getProductos();
     
     $scope.showProductosAdd = function(event) {
         $(event.currentTarget).addClass('disabled');
@@ -28,8 +31,8 @@ angular.module('inexdeoAdminApp')
         });
         
         modalInstanceAdd.result.then(function (data) {
-            $scope.productos.push(data.producto);
-            $scope.message = data.message;
+            getProductos();
+            $scope.message = data;
         });
         
         $(event.currentTarget).removeClass('disabled');

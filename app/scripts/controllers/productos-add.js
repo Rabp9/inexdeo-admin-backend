@@ -25,7 +25,7 @@ angular.module('inexdeoAdminApp')
         $('#' + boton).text('Guardando...');
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
-        console.log(producto);
+        
         producto.producto_images = [];
         angular.forEach(urls_preview, function(value, key) {
             producto.producto_images.push({
@@ -43,15 +43,10 @@ angular.module('inexdeoAdminApp')
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(data);
-        }, function(data) {
+        }, function (err) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
-            $uibModalInstance.close({
-                message: {
-                    type: 'error',
-                    text: 'Hubo un error. Código: ' + data.status + ' Mensaje: ' + data.statusText
-                }
-            });
+            $uibModalInstance.close(err.data);
         });
     };
     
