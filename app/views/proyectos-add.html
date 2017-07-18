@@ -1,0 +1,71 @@
+<form ng-submit="saveProyecto(proyecto, 'btnSaveProyecto', urls_preview, brochure_preview, title_images, portada_preview)">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Nuevo Proyecto</h4>
+    </div>
+    <div class="modal-body modal-body-overflow">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="txtTitle">Título</label>
+                    <input id="txtTitle" class="form-control" type="text" ng-model="proyecto.title" required />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="txtSubtitle">Sub Título</label>
+                    <input id="txtSubtitle" class="form-control" type="text" ng-model="proyecto.subtitle" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="txtaBody">Contenido</label>
+            <textarea id="txtaBody" class="form-control textarea-3x" ng-model="proyecto.body" ui-tinymce="tinymceOptions"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="txtaResumen">Resumen</label>
+            <textarea id="txtaResumen" class="form-control textarea-2x" ng-model="proyecto.resumen" ui-tinymce="tinymceOptions" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="flPortada">Portada</label>
+            <input id="flPortada" type="file" class="form-control" ngf-select="preview_portada($file, $invalidFiles)" 
+                accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
+            <img ng-hide="portada_preview === undefined || portada_preview === null" class="img-responsive" ng-src="{{tmp_path}}/{{portada_preview}}" alt="imagen previa" />
+            <span ng-hide="portada_preview === undefined || portada_preview === null">Portada cargada correctamente</span>
+            <span ng-show="loading">Cargando...</span>
+            <span ng-show="!loading && portada_preview === null">No fue posible cargar la Portada</span>
+            <span ng-hide="portada_preview === undefined || portada_preview === null"><!-- si la imagen cargo entonces definimos si se muestra o no-->
+        </div>
+        <div class="form-group" ng-hide="portada_preview === undefined || portada_preview === null">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="proyecto.portada"> Mostrar Portada en Lista
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="flImagenesProyectos">Imágenes</label>
+            <input id="flImagenesProyectos" type="file" class="form-control"  ngf-multiple="true" 
+                ngf-select="preview($files, $invalidFiles)" accept="image/*" 
+                ngf-max-height="5000" ngf-max-size="10MB"/>
+            <span ng-show="loading">Cargando...</span>
+            <div ng-image-gallery
+                 images="images" on-delete="delete(img, cb)" methods="methods">
+            </div>
+            <input class="form-control" type="text" placeholder="Tìtulo de Imagen {{ $index + 1 }}" 
+                ng-repeat="image in images" ng-model="title_images[$index]">
+        </div>
+        <div class="form-group">
+            <label for="flBrochure">Brochure</label>
+            <input id="flBrochure" type="file" class="form-control" ngf-select="preview_brochure($file, $invalidFiles)" 
+                accept="application/pdf" ngf-max-height="5000" ngf-max-size="10MB"/>
+            <span ng-hide="brochure_preview === undefined || brochure_preview === null">Brochure cargado correctamente</span>
+            <span ng-show="loading">Cargando...</span>
+            <span ng-show="!loading && brochure_preview === null">No fue posible cargar el Brochure</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="cancel()">Cerrar</button>
+        <button id="btnSaveProyecto" class="btn btn-success" type="submit">Guardar Proyecto</button>
+    </div>
+</form>
