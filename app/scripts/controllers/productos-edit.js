@@ -80,7 +80,6 @@ angular.module('inexdeoAdminApp')
         $('#' + boton).prop('disabled', true);
         
         angular.forEach(urls_preview, function(value, key) {
-            console.log(title_images[start + key]);
             producto.producto_images.push({
                 url: value,
                 title: title_images[start + key]
