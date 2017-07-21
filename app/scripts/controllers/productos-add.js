@@ -116,13 +116,9 @@ angular.module('inexdeoAdminApp')
         fd.append('file', portada);
         
         ProductosService.previewPortada(fd, function(data) {
-            if (data.message.type === 'success') {
-                $scope.portada_preview = data.filename;
-            } else if (data.message.type === 'error') {
-                $scope.portada_preview = null;
-            }
+            $scope.portada_preview = data.filename;
             $scope.loading = false;
-        }, function(data) {
+        }, function(err) {
             $scope.portada_preview = null;
             $scope.loading = false;
         });
