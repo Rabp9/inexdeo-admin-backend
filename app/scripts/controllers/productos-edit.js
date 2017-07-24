@@ -28,15 +28,6 @@ angular.module('inexdeoAdminApp')
         }
     };
     
-    function getProductosList() {
-        return $q(function(resolve, reject) {
-            ProductosService.getTreeList({spacer: '_'}, function(data) {
-                $scope.productos_list = data.productos;
-                resolve($scope.productos_list);
-            });
-        });
-    }
-    
     getProductosList().then(function(productos_list) {
         ProductosService.get({id: producto.id}, function(data) {
             $scope.producto = data.producto;

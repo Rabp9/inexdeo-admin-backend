@@ -60,7 +60,7 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview = function(images, errFiles) {
-        $scope.loading = true;
+        $scope.loading_imagenes = true;
         var fd = new FormData();
         $scope.images = [];
         
@@ -81,7 +81,7 @@ angular.module('inexdeoAdminApp')
                 $scope.images.push(image);
                 title++;
             });
-            $scope.loading = false;
+            $scope.loading_imagenes = false;
             if (data.hasOwnProperty('message')) {
                 if (data.message.type === 'error') {
                     alert(data.message.text);
@@ -109,7 +109,7 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview_portada = function(portada, errFiles) {
-        $scope.loading = true;
+        $scope.loading_portada = true;
         var fd = new FormData();
         fd.append('file', portada);
         
@@ -119,10 +119,10 @@ angular.module('inexdeoAdminApp')
             } else if (data.message.type === 'error') {
                 $scope.portada_preview = null;
             }
-            $scope.loading = false;
+            $scope.loading_portada = false;
         }, function(data) {
             $scope.portada_preview = null;
-            $scope.loading = false;
+            $scope.loading_portada = false;
         });
     };
 });

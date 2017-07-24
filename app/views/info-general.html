@@ -24,7 +24,7 @@
                     <tr ng-show="!loading && infos.length === 0"><td colspan="5">No hay registros</td></tr>
                     <tr ng-repeat="info in infos" row-id="{{ info.data }}">
                         <td>{{ info.data }}</td>
-                        <td>{{ info.value | limitTo: 50 }}<span ng-if="info.value.length > 50">...</span></td>
+                        <td><span ng-bind-html="info.value | limitTo: 90"></span><span ng-if="info.value.length > 90">...</span></td>
                         <td><button type="button" class="btn btn-primary btn-sm" ng-click="showInfosEdit(info, $event)"><span class="glyphicon glyphicon-pencil"></span></button></td>
                     </tr>
                 </tbody>
