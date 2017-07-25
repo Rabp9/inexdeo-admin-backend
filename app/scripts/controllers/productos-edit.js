@@ -13,8 +13,7 @@ angular.module('inexdeoAdminApp')
         
     $scope.loading = false;
     $scope.producto = {};
-    var start = 0;
-    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/paginas/'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/productos'; 
     
     $scope.tinymceProductosOptions = {
         toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | fontsizeselect | fontselect ",
@@ -28,34 +27,14 @@ angular.module('inexdeoAdminApp')
         }
     };
     
-    getProductosList().then(function(productos_list) {
+    init();
+    
+    function init() {
         ProductosService.get({id: producto.id}, function(data) {
             $scope.producto = data.producto;
-            start = $scope.producto.producto_images.length;
-            angular.forEach($scope.producto.producto_images, function(value, key) {
-                $scope.images.push({
-                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'productos' + '/' + value.url,
-                    id: value.id,
-                    deletable : true,
-                    title: value.title
-                });
-                $scope.title_images.push(value.title);
-            });
-            
-            var k = -1;
-            angular.forEach(productos_list, function(value, key) {
-                if (parseInt(value.id) === parseInt($scope.producto.parent_id)) {
-                    k = key;
-                }
-            });
-            if (k !== -1) {
-                $scope.producto.parent_id = productos_list[k].id;
-            }
-            
-            $scope.brochure_preview = $scope.producto.brochure;
+            $scope.portada_preview = $scope.producto.img_portada;
         });
-    });
-    
+    }
     $scope.images = [];
     $scope.methods = {};
     $scope.title_images = [];
