@@ -13,6 +13,7 @@ angular.module('inexdeoAdminApp')
         
     $scope.loading = false;
     $scope.producto = {};
+    var start = 0;
     $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/productos'; 
     
     $scope.tinymceProductosOptions = {
@@ -33,6 +34,18 @@ angular.module('inexdeoAdminApp')
         ProductosService.get({id: producto.id}, function(data) {
             $scope.producto = data.producto;
             $scope.portada_preview = $scope.producto.img_portada;
+            $scope.producto.img_portada = null;
+            
+            start = $scope.producto.producto_images.length;    
+            angular.forEach($scope.producto.producto_images, function(value, key) {
+                $scope.images.push({
+                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'productos' + '/' + value.url,
+                    id: value.id,
+                    deletable : true,
+                    title: value.title
+                });
+                $scope.title_images.push(value.title);
+            });
         });
     }
     $scope.images = [];
