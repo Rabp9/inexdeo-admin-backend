@@ -14,6 +14,7 @@ angular.module('inexdeoAdminApp')
     $scope.loading = false;
     $scope.producto = {};
     var start = 0;
+    var changed = false;
     $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/productos'; 
     
     $scope.tinymceProductosOptions = {
@@ -57,7 +58,7 @@ angular.module('inexdeoAdminApp')
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.saveProducto = function(producto, boton, urls_preview, brochure_preview, title_images) {
+    $scope.saveProducto = function(producto, boton, urls_preview, brochure_preview, title_images, portada_preview) {
         $('#' + boton).text('Guardando...');
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
@@ -70,6 +71,11 @@ angular.module('inexdeoAdminApp')
         });
         if (brochure_preview !== null) {
             producto.brochure = brochure_preview;
+        }
+        if (changed) {
+            if (portada_preview !== null) {
+                producto.img_portada = portada_preview;
+            }
         }
         ProductosService.save(producto, function(data) {
             $('#' + boton).removeClass('disabled');
@@ -157,13 +163,19 @@ angular.module('inexdeoAdminApp')
         });
     };
     
-    $scope.upload = function(image, errFiles) {
+    $scope.preview_portada = function(portada, errFiles) {
+        $scope.loading = true;
         var fd = new FormData();
-        fd.append('file', image);
+        fd.append('file', portada);
         
-        PagesService.upload(fd, function(data) {
-            $scope.url = $scope.tmp_path + data.filename;
-            document.getElementById($scope.input).value = $scope.url;
+        ProductosService.previewPortada(fd, function(data) {
+            $scope.portada_preview = data.filename;
+            $scope.loading = false;
+            $scope.tmp_path = tmp_path;
+            changed = true;
+        }, function(err) {
+            $scope.portada_preview = null;
+            $scope.loading = false;
         });
     };
 });
