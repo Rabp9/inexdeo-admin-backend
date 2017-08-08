@@ -81,15 +81,10 @@ angular.module('inexdeoAdminApp')
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(data);
-        }, function(data) {
+        }, function(err) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
-            $uibModalInstance.close({
-                message: {
-                    type: 'error',
-                    text: 'Hubo un error. Código: ' + data.status + ' Mensaje: ' + data.statusText
-                }
-            });
+            $uibModalInstance.close(err.data);
         });
     };
     

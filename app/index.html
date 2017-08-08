@@ -48,6 +48,12 @@
                     <a ng-class="{active: $route.current.controllerAs === 'proyectos'}" ng-href="#/proyectos">Proyectos</a>
                 </li>
                 <li>
+                    <a ng-class="{active: $route.current.controllerAs === 'galeria'}" ng-href="#/galeria">Galería</a>
+                </li>
+                <li>
+                    <a ng-class="{active: $route.current.controllerAs === 'fondos'}" ng-href="#/fondos">Fondos</a>
+                </li>
+                <li>
                     <a ng-class="{active: $route.current.controllerAs === 'roles'}" ng-href="#/roles">Roles</a>
                 </li>
                 <li>
@@ -89,6 +95,12 @@
                         </li>
                         <li ng-class="{active: $route.current.controllerAs === 'proyectos'}">
                             <a ng-href="#/proyectos">Proyectos</a>
+                        </li>
+                        <li ng-class="{active: $route.current.controllerAs === 'galeria'}">
+                            <a ng-href="#/galeria">Galería</a>
+                        </li>
+                        <li ng-class="{active: $route.current.controllerAs === 'fondos'}">
+                            <a ng-href="#/fondos">Fondos</a>
                         </li>
                         <li ng-class="{active: $route.current.controllerAs === 'roles'}">
                             <a ng-href="#/roles">Roles</a>
@@ -205,6 +217,8 @@
         <script src="scripts/controllers/asesorias-add.js"></script>
         <script src="scripts/controllers/asesorias-edit.js"></script>
         <script src="scripts/services/asesoriasservice.js"></script>
+        <script src="scripts/controllers/galeria.js"></script>
+        <script src="scripts/controllers/fondos.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -124,6 +124,16 @@ angular
             controllerAs: 'asesorias',
             title: 'Asesorías'
         })
+        .when('/galeria', {
+          templateUrl: 'views/galeria.html',
+          controller: 'GaleriaCtrl',
+          controllerAs: 'galeria'
+        })
+        .when('/fondos', {
+          templateUrl: 'views/fondos.html',
+          controller: 'FondosCtrl',
+          controllerAs: 'fondos'
+        })
         .otherwise({
             redirectTo: '/'
         });

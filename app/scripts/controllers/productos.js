@@ -56,10 +56,8 @@ angular.module('inexdeoAdminApp')
         });
         
         modalInstanceEdit.result.then(function (data) {
-            ProductosService.getAdmin(function(data) {
-                $scope.productos = data.productos;
-            });
-            $scope.message = data.message;
+            getProductos();
+            $scope.message = data;
         });
         
         $(event.currentTarget).removeClass('disabled');
