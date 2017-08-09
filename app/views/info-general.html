@@ -20,8 +20,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-hide="!loading"><td colspan="5">Cargando...</td></tr>
-                    <tr ng-show="!loading && infos.length === 0"><td colspan="5">No hay registros</td></tr>
+                    <tr ng-hide="!loading"><td colspan="3">Cargando...</td></tr>
+                    <tr ng-show="!loading && infos.length === 0"><td colspan="3">No hay registros</td></tr>
                     <tr ng-repeat="info in infos" row-id="{{ info.data }}">
                         <td>{{ info.data }}</td>
                         <td><span ng-bind-html="info.value | limitTo: 90"></span><span ng-if="info.value.length > 90">...</span></td>

@@ -1,1 +1,32 @@
-<p>This is the fondos view.</p>
+<ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li>Fondos</li>
+</ol>
+<div class="alert alert-dismissible" ng-class="{'alert-success': message.code === 200, 'alert-danger': message.code !== 200 }" role="alert" ng-show="message.code !== undefined">
+    <button type="button" class="close" ng-click="message.code = undefined" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{ message.message }} 
+</div>
+<h2>Fondos</h2>
+<hr>
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+        <scrollable-table watch="fondos" class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th sortable-header col="data">Fondo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-hide="!loading"><td colspan="2">Cargando...</td></tr>
+                    <tr ng-show="!loading && fondos.length === 0"><td colspan="2">No hay registros</td></tr>
+                    <tr ng-repeat="fondo in fondos" row-id="{{ info.data }}">
+                        <td>{{ fondo.data }}</td>
+                        <td><button type="button" class="btn btn-primary btn-sm" ng-click="showFondosEdit(fondo, $event)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </scrollable-table>
+    </div>
+</div>
