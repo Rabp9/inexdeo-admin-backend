@@ -6,12 +6,17 @@
     <div class="modal-body">
         <div class="form-group">
             <label for="txtData">Fondo</label>
-            <input id="txtData" class="form-control" type="text" ng-model="info.data" readonly />
+            <input id="txtData" class="form-control" type="text" ng-model="fondo.data" readonly />
         </div>
         <div class="form-group">
-            <label for="txtaValor">Valor</label>
-            <textarea id="txtaValor" class="form-control" ng-model="info.value" ui-tinymce="tinymceOptions"
-                style="height: 250px;"></textarea>
+            <label for="flImagen">Imagen</label>
+            <input id="flPortada" type="file" class="form-control" ngf-select="preview_portada($file, $invalidFiles)" 
+                accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
+            <img ng-hide="portada_preview === undefined || portada_preview === null" class="img-responsive" ng-src="{{tmp_path}}/{{portada_preview}}" alt="imagen previa" />
+            <span ng-hide="portada_preview === undefined || portada_preview === null">Portada cargada correctamente</span>
+            <span ng-show="loading_portada">Cargando...</span>
+            <span ng-show="!loading && portada_preview === null">No fue posible cargar la Portada</span>
+            <span ng-hide="portada_preview === undefined || portada_preview === null"><!-- si la imagen cargo entonces definimos si se muestra o no-->
         </div>
     </div>
     <div class="modal-footer">
