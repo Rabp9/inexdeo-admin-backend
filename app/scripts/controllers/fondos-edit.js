@@ -10,6 +10,7 @@
 angular.module('inexdeoAdminApp')
 .controller('FondosEditCtrl', function ($scope, fondo, $uibModalInstance, InfosService) {
     $scope.fondo = $.extend(true, {}, fondo);
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
 
     $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');
@@ -20,7 +21,7 @@ angular.module('inexdeoAdminApp')
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
         
-        InfosService.save(fondo, function(data) {
+        InfosService.saveFondo(fondo, function(data) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(data);
@@ -28,6 +29,20 @@ angular.module('inexdeoAdminApp')
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(err.data);
+        });
+    };
+    
+    $scope.preview_fondo = function(fondo, errFiles) {
+        $scope.loading_fondo = true;
+        var fd = new FormData();
+        fd.append('file', fondo);
+        
+        InfosService.previewFondo(fd, function(data) {
+            $scope.fondo_preview = data.filename;
+            $scope.loading_fondo = false;
+        }, function(err) {
+            $scope.fondo_preview = null;
+            $scope.loading_fondo = false;
         });
     };
 });
