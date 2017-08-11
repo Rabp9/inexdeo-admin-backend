@@ -16,11 +16,14 @@ angular.module('inexdeoAdminApp')
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.saveFondo = function(fondo, boton) {
+    $scope.saveFondo = function(fondo, boton, fondo_preview) {
         $('#' + boton).text('Guardando...');
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
         
+        if (fondo_preview) {
+            fondo.value = fondo_preview;
+        }
         InfosService.saveFondo(fondo, function(data) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
