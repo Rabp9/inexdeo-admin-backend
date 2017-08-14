@@ -2,39 +2,122 @@
 
 /**
  * @ngdoc function
- * @name inexdeoAdminApp.controller:ProductosAddCtrl
+ * @name inexdeoAdminApp.controller:ProductosEditCtrl
  * @description
- * # ProductosAddCtrl
+ * # ProductosEditCtrl
  * Controller of the inexdeoAdminApp
  */
 angular.module('inexdeoAdminApp')
-.controller('GaleriaEditCtrl', function ($scope, AlbumesService, $uibModalInstance, PagesService) {
-    $scope.album = {};
-    $scope.methods = {};
-    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
-    var tmp_path = $scope.tmp_path;
-    $scope.loading = false;
-    $scope.title_images = [];
-    $scope.album.portada = false;
+.controller('GaleriaEditCtrl', function ($scope, album, $uibModalInstance, 
+    AlbumesService, $q, PagesService) {
         
+    $scope.loading = false;
+    $scope.album = {};
+    var start = 0;
+    var changed = false;
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/galeria'; 
+        
+    init();
+    
+    function init() {
+        AlbumesService.get({id: album.id}, function(data) {
+            $scope.album = data.album;
+           
+            
+            start = $scope.album.imagenes.length;    
+            angular.forEach($scope.album.imagenes, function(value, key) {
+                $scope.images.push({
+                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'galeria' + '/' + value.url,
+                    id: value.id,
+                    deletable : true,
+                    descripcion: value.descripcion
+                });
+                $scope.title_images.push(value.descripcion);
+            });
+        });
+    }
+    $scope.images = [];
+    $scope.methods = {};
+    $scope.title_images = [];
+    var tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
+    
     $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.saveAlbum = function(album, boton) {
+    $scope.saveAlbum = function(album, boton, urls_preview, title_images) {
         $('#' + boton).text('Guardando...');
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
+        
+        angular.forEach(urls_preview, function(value, key) {
+            album.imagenes.push({
+                url: value,
+                decripcion: title_images[start + key]
+            });
+        });
         
         AlbumesService.save(album, function(data) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(data);
-        }, function (err) {
+        }, function(err) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(err.data);
         });
     };
-
+    
+    $scope.delete = function(img, cb) {
+        if (confirm('¿Està seguro de eliminar esta imagen?')) {
+            var index = $scope.images.indexOf(img);
+            AlbumesService.deleteImage({id: img.id}, function(data) {
+                $scope.images.splice(index, 1);
+                $scope.title_images.splice(index, 1);
+                angular.forEach($scope.album.imagenes, function(value, key) {
+                    if (value.id === img.id) {
+                        $scope.album.imagenes.splice(key, 1);
+                    }
+                });
+                // $scope.urls_preview.splice(index, 1);
+                if ($scope.images.length > 0) {
+                    $scope.methods.open(0);
+                } else {
+                    $scope.methods.close();
+                }
+            });
+        }
+    };
+    
+    $scope.preview = function(images, errFiles) {
+        $scope.loading = true;
+        var fd = new FormData();
+        
+        angular.forEach(images, function(value, key) {
+            fd.append('files[]', value);
+        });
+        
+        AlbumesService.preview(fd, function(data) {
+            $scope.loading = true;
+            $scope.urls_preview = data.filenames;
+            var title = 1;
+            angular.forEach(data.filenames, function(value, key) {
+                var image = {
+                    url: tmp_path + value,
+                    id: title,
+                    deletable : true
+                };
+                
+                $scope.images.push(image);
+                title++;
+            });
+            $scope.loading = false;
+            if (data.hasOwnProperty('message')) {
+                if (data.message.type === 'error') {
+                    alert(data.message.text);
+                }
+            }
+        });
+    };
+    
 });

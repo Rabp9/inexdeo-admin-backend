@@ -19,6 +19,14 @@ angular.module('inexdeoAdminApp')
         getAdmin: {
             method: 'GET',
             url: EnvService.getHost() + 'albumes/getAdmin/.json'
+        },
+        deleteImage: {
+            method: 'POST',
+            url: EnvService.getHost() + 'albumes/deleteImage/.json'
+        },
+        remove: {
+            method: 'POST',
+            url: EnvService.getHost() + 'albumes/remove/.json'
         }
     });
 });
