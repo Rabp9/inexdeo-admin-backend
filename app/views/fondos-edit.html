@@ -1,0 +1,25 @@
+<form novalidate angular-validator angular-validator-submit="saveFondo(fondo, 'btnSaveFondo', fondo_preview)" name="fondoEdit" angular-validator-quiet>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modificar Fondo</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="txtData">Fondo</label>
+            <input id="txtData" class="form-control" type="text" ng-model="fondo.data" readonly />
+        </div>
+        <div class="form-group">
+            <label for="flValor">Imagen</label>
+            <input id="flValor" type="file" class="form-control" ngf-select="preview_fondo($file, $invalidFiles)" 
+                accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
+            <img ng-hide="fondo_preview === undefined || fondo_preview === null" class="img-responsive" ng-src="{{tmp_path}}/{{fondo_preview}}" alt="imagen previa" />
+            <span ng-hide="fondo_preview === undefined || fondo_preview === null">Fondo cargado correctamente</span>
+            <span ng-show="loading_fondo">Cargando...</span>
+            <span ng-show="!loading && fondo_preview === null">No fue posible cargar el Fondo</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="cancel()">Cerrar</button>
+        <button id="btnSaveFondo" class="btn btn-success" type="submit">Guardar Info</button>
+    </div>
+</form>
