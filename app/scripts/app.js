@@ -125,14 +125,16 @@ angular
             title: 'Asesorías'
         })
         .when('/galeria', {
-          templateUrl: 'views/galeria.html',
-          controller: 'GaleriaCtrl',
-          controllerAs: 'galeria'
+            templateUrl: 'views/galeria.html',
+            controller: 'GaleriaCtrl',
+            controllerAs: 'galeria',
+            title: 'Galería'
         })
         .when('/fondos', {
-          templateUrl: 'views/fondos.html',
-          controller: 'FondosCtrl',
-          controllerAs: 'fondos'
+            templateUrl: 'views/fondos.html',
+            controller: 'FondosCtrl',
+            controllerAs: 'fondos',
+            title: 'Fondos'
         })
         .otherwise({
             redirectTo: '/'

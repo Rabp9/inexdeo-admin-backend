@@ -9,37 +9,37 @@
  */
 angular.module('inexdeoAdminApp')
 .controller('ServiciosAddCtrl', function ($scope, ServiciosService, $uibModalInstance, PagesService) {
-    $scope.servcicio = {};
+    $scope.servicio = {};
     $scope.methods = {};
     $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
     var tmp_path = $scope.tmp_path;
     $scope.loading = false;
     $scope.title_images = [];
-    $scope.servcicio.portada = false;
+    $scope.servicio.portada = false;
         
     $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.saveServicio = function(servcicio, boton, urls_preview, brochure_preview, title_images, portada_preview) {
+    $scope.saveServicio = function(servicio, boton, urls_preview, brochure_preview, title_images, portada_preview) {
         $('#' + boton).text('Guardando...');
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
         
-        servcicio.servcicio_images = [];
+        servicio.servicio_images = [];
         angular.forEach(urls_preview, function(value, key) {
-            servcicio.servcicio_images.push({
+            servicio.servicio_images.push({
                 url: value,
                 title: title_images[key]
             });
         });
         if (brochure_preview !== null) {
-            servcicio.brochure = brochure_preview;
+            servicio.brochure = brochure_preview;
         }
         if (portada_preview !== null) {
-            servcicio.img_portada = portada_preview;
+            servicio.img_portada = portada_preview;
         }
-        ServiciosService.save(servcicio, function(data) {
+        ServiciosService.save(servicio, function(data) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(data);

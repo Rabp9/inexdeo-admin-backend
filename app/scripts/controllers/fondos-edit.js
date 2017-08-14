@@ -9,9 +9,15 @@
  */
 angular.module('inexdeoAdminApp')
 .controller('FondosEditCtrl', function ($scope, fondo, $uibModalInstance, InfosService) {
-    $scope.fondo = $.extend(true, {}, fondo);
-    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
-
+    
+    function init() {
+        $scope.fondo = $.extend(true, {}, fondo);
+        $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'bg' + '/';
+        $scope.fondo_preview = fondo.value;
+    }
+    
+    init();
+    
     $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');
     };
@@ -36,6 +42,7 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview_fondo = function(fondo, errFiles) {
+        $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
         $scope.loading_fondo = true;
         var fd = new FormData();
         fd.append('file', fondo);

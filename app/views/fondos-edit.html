@@ -13,7 +13,7 @@
             <input id="flValor" type="file" class="form-control" ngf-select="preview_fondo($file, $invalidFiles)" 
                 accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
             <img ng-hide="fondo_preview === undefined || fondo_preview === null" class="img-responsive" ng-src="{{tmp_path}}/{{fondo_preview}}" alt="imagen previa" />
-            <span ng-hide="fondo_preview === undefined || fondo_preview === null">Fondo cargado correctamente</span>
+            <span ng-hide="(fondo_preview === undefined || fondo_preview === null) && loading_fondo">Fondo cargado correctamente</span>
             <span ng-show="loading_fondo">Cargando...</span>
             <span ng-show="!loading && fondo_preview === null">No fue posible cargar el Fondo</span>
         </div>

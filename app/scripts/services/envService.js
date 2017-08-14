@@ -13,7 +13,7 @@ angular.module('inexdeoAdminApp')
         getHost: function() {
             switch (window.location.hostname) {
                 case 'localhost':
-                    return 'http://localhost/inexdeo-backend/';
+                    return 'http://localhost:8000/inexdeo-backend/';
                 case 'admin.inexdeo.robertobocanegra.com':
                     return 'http://inexdeo.robertobocanegra.com/api/';
             }
