@@ -1,1 +1,39 @@
-<p>This is the galeria view.</p>
+<ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li>Álbumes</li>
+</ol>
+<div class="alert alert-dismissible" ng-class="{'alert-success': message.code === 200, 'alert-danger': message.code !== 200 }" role="alert" ng-show="message.code !== undefined">
+    <button type="button" class="close" ng-click="message.code = undefined" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{ message.message }} 
+</div>
+<h2>Álbumes</h2>
+<hr>
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+        <button type="button" class="btn btn-primary" ng-click="showAlbumesAdd($event)"><span class="glyphicon glyphicon-plus"></span> Nuevo Álbum</button>
+        <scrollable-table watch="albumes" class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th sortable-header col="id">Código</th>
+                        <th sortable-header col="title">Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-hide="!loading"><td colspan="5">Cargando...</td></tr>
+                    <tr ng-show="!loading && albumes.length === 0"><td colspan="5">No hay registros</td></tr>
+                    <tr ng-class="{'danger': album.estado_id === 2}" ng-repeat="album in albumes" row-id="{{ album.id }}">
+                        <td>{{ album.id }}</td>
+                        <td>{{ album.descripcion }}</td>
+                        <td>
+                        	<button type="button" class="btn btn-info btn-sm" ng-click="showAlbumesView(album, $event)"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            <button type="button" class="btn btn-primary btn-sm" ng-click="showAlbumesEdit(album, $event)"><span class="glyphicon glyphicon-pencil"></span></button>
+                            <button type="button" class="btn btn-warning btn-sm" ng-click="removeAlbum(album, $event)"><span class="glyphicon glyphicon-remove"></span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </scrollable-table>
+    </div>
+</div>

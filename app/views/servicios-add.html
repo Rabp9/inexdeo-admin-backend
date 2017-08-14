@@ -1,7 +1,7 @@
 <form ng-submit="saveServicio(servicio, 'btnSaveServicio', urls_preview, brochure_preview, title_images, portada_preview)">
     <div class="modal-header">
         <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Nuevo Servicio</h4>
+        <h4 class="modal-title">Nuevo servicio</h4>
     </div>
     <div class="modal-body modal-body-overflow">
         <div class="row">
@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="txtaResumen">Resumen</label>
-            <textarea id="txtaResumen" class="form-control textarea-2x" ng-model="servicio.resumen" ui-tinymce="tinymceOptions" required></textarea>
+            <textarea id="txtaResumen" class="form-control textarea-2x" ng-model="servicio.resumen" ui-tinymce="tinymceOptions"></textarea>
         </div>
         <div class="form-group">
             <label for="flPortada">Portada</label>
@@ -32,7 +32,7 @@
                 accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
             <img ng-hide="portada_preview === undefined || portada_preview === null" class="img-responsive" ng-src="{{tmp_path}}/{{portada_preview}}" alt="imagen previa" />
             <span ng-hide="portada_preview === undefined || portada_preview === null">Portada cargada correctamente</span>
-            <span ng-show="loading">Cargando...</span>
+            <span ng-show="loading_portada">Cargando...</span>
             <span ng-show="!loading && portada_preview === null">No fue posible cargar la Portada</span>
             <span ng-hide="portada_preview === undefined || portada_preview === null"><!-- si la imagen cargo entonces definimos si se muestra o no-->
         </div>
@@ -48,7 +48,7 @@
             <input id="flImagenesServicios" type="file" class="form-control"  ngf-multiple="true" 
                 ngf-select="preview($files, $invalidFiles)" accept="image/*" 
                 ngf-max-height="5000" ngf-max-size="10MB"/>
-            <span ng-show="loading">Cargando...</span>
+            <span ng-show="loading_imagenes">Cargando...</span>
             <div ng-image-gallery
                  images="images" on-delete="delete(img, cb)" methods="methods">
             </div>

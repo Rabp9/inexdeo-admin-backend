@@ -1,5 +1,12 @@
 'use strict';
-proyectos
+
+/**
+ * @ngdoc function
+ * @name inexdeoAdminApp.controller:ProyectosEditCtrl
+ * @description
+ * # ProyectosEditCtrl
+ * Controller of the inexdeoAdminApp
+ */
 angular.module('inexdeoAdminApp')
 .controller('ProyectosEditCtrl', function ($scope, proyecto, $uibModalInstance, 
     ProyectosService, $q, PagesService) {
@@ -7,7 +14,9 @@ angular.module('inexdeoAdminApp')
     $scope.loading = false;
     $scope.proyecto = {};
     var start = 0;
-    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/paginas/';    
+    var changed = false;
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/Proyectos'; 
+    
     $scope.tinymceProyectosOptions = {
         toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | fontsizeselect | fontselect ",
         fontsize_formats: "8pt 10pt 11pt 12pt 13pt 14pt 15pt 16pt 17pt 18pt 19pt 20pt 21pt 22pt 23pt 24pt 25pt 26pt 27pt 28pt",
@@ -20,43 +29,26 @@ angular.module('inexdeoAdminApp')
         }
     };
     
-    function getProyectosList() {
-        return $q(function(resolve, reject) {
-            ProyectosService.getTreeList({spacer: '_'}, function(data) {
-                $scope.proyectos_list = data.proyectos;
-                resolve($scope.proyectos_list);
-            });
-        });
-    }
+    init();
     
-    getProyectosList().then(function(proyectos_list) {
+    function init() {
         ProyectosService.get({id: proyecto.id}, function(data) {
             $scope.proyecto = data.proyecto;
-            start = $scope.proyecto.servicio_images.length;
-            angular.forEach($scope.proyecto.servicio_images, function(value, key) {
+            $scope.portada_preview = $scope.proyecto.img_portada;
+            $scope.proyecto.img_portada = null;
+            
+            start = $scope.proyecto.proyecto_images.length;    
+            angular.forEach($scope.proyecto.proyecto_images, function(value, key) {
                 $scope.images.push({
-                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'proyectos' + '/' + value.url,
+                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'Proyectos' + '/' + value.url,
                     id: value.id,
                     deletable : true,
                     title: value.title
                 });
                 $scope.title_images.push(value.title);
             });
-            
-            var k = -1;
-            angular.forEach(proyectos_list, function(value, key) {
-                if (parseInt(value.id) === parseInt($scope.proyecto.parent_id)) {
-                    k = key;
-                }
-            });
-            if (k !== -1) {
-                $scope.proyecto.parent_id = proyectos_list[k].id;
-            }
-            
-            $scope.brochure_preview = $scope.proyecto.brochure;
         });
-    });
-    
+    }
     $scope.images = [];
     $scope.methods = {};
     $scope.title_images = [];
@@ -66,13 +58,13 @@ angular.module('inexdeoAdminApp')
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.saveServicio = function(proyecto, boton, urls_preview, brochure_preview, title_images) {
+    $scope.saveProyecto = function(proyecto, boton, urls_preview, brochure_preview, title_images, portada_preview) {
         $('#' + boton).text('Guardando...');
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
         
         angular.forEach(urls_preview, function(value, key) {
-            proyecto.servicio_images.push({
+            proyecto.proyecto_images.push({
                 url: value,
                 title: title_images[start + key]
             });
@@ -80,19 +72,19 @@ angular.module('inexdeoAdminApp')
         if (brochure_preview !== null) {
             proyecto.brochure = brochure_preview;
         }
+        if (changed) {
+            if (portada_preview !== null) {
+                proyecto.img_portada = portada_preview;
+            }
+        }
         ProyectosService.save(proyecto, function(data) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(data);
-        }, function(data) {
+        }, function(err) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
-            $uibModalInstance.close({
-                message: {
-                    type: 'error',
-                    text: 'Hubo un error. Código: ' + data.status + ' Mensaje: ' + data.statusText
-                }
-            });
+            $uibModalInstance.close(err.data);
         });
     };
     
@@ -102,9 +94,9 @@ angular.module('inexdeoAdminApp')
             ProyectosService.deleteImage({id: img.id}, function(data) {
                 $scope.images.splice(index, 1);
                 $scope.title_images.splice(index, 1);
-                angular.forEach($scope.proyecto.servicio_images, function(value, key) {
+                angular.forEach($scope.proyecto.proyecto_images, function(value, key) {
                     if (value.id === img.id) {
-                        $scope.proyecto.servicio_images.splice(key, 1);
+                        $scope.proyecto.proyecto_images.splice(key, 1);
                     }
                 });
                 // $scope.urls_preview.splice(index, 1);
@@ -166,13 +158,19 @@ angular.module('inexdeoAdminApp')
         });
     };
     
-    $scope.upload = function(image, errFiles) {
+    $scope.preview_portada = function(portada, errFiles) {
+        $scope.loading = true;
         var fd = new FormData();
-        fd.append('file', image);
+        fd.append('file', portada);
         
-        PagesService.upload(fd, function(data) {
-            $scope.url = $scope.tmp_path + data.filename;
-            document.getElementById($scope.input).value = $scope.url;
+        ProyectosService.previewPortada(fd, function(data) {
+            $scope.portada_preview = data.filename;
+            $scope.loading = false;
+            $scope.tmp_path = tmp_path;
+            changed = true;
+        }, function(err) {
+            $scope.portada_preview = null;
+            $scope.loading = false;
         });
     };
 });

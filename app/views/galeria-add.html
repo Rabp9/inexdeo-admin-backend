@@ -1,0 +1,32 @@
+<form ng-submit="saveAlbum(album, 'btnSaveAlbum', urls_preview, title_images)">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Nuevo Álbum</h4>
+    </div>
+    <div class="modal-body modal-body-overflow">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="txtDescripcion">Descripción</label>
+                    <input id="txtDescripcion" class="form-control" type="text" ng-model="album.descripcion" required />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="flImagenesAlbumes">Imágenes del álbum</label>
+            <input id="flImagenesAlbumes" type="file" class="form-control"  ngf-multiple="true" 
+                ngf-select="preview($files, $invalidFiles)" accept="image/*" 
+                ngf-max-height="5000" ngf-max-size="10MB"/>
+            <span ng-show="loading_imagenes">Cargando...</span>
+            <div ng-image-gallery
+                 images="images" on-delete="delete(img, cb)" methods="methods">
+            </div>
+            <input class="form-control" type="text" placeholder="Tìtulo de Imagen {{ $index + 1 }}" 
+                ng-repeat="image in images" ng-model="title_images[$index]">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="cancel()">Cerrar</button>
+        <button id="btnSaveAlbum" class="btn btn-success" type="submit">Guardar album</button>
+    </div>
+</form>

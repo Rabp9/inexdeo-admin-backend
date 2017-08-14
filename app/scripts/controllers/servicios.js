@@ -1,28 +1,38 @@
 'use strict';
 
+/**
+ * @ngdoc function
+ * @name inexdeoAdminApp.controller:ServiciosCtrl
+ * @description
+ * # ServiciosCtrl
+ * Controller of the inexdeoAdminApp
+ */
 angular.module('inexdeoAdminApp')
 .controller('ServiciosCtrl', function ($scope, ServiciosService, $uibModal) {
     $scope.loading = true;
     
-    ServiciosService.getAdmin(function(data) {
-        $scope.servicios = data.servicios;
-        $scope.loading = false;
-    });
+    function getServicios() {
+        ServiciosService.getAdmin(function(data) {
+            $scope.servicios = data.servicios;
+            $scope.loading = false;
+        });
+    }
+    getServicios();
     
     $scope.showServiciosAdd = function(event) {
         $(event.currentTarget).addClass('disabled');
         $(event.currentTarget).prop('disabled', true);
         
         var modalInstanceAdd = $uibModal.open({
-            templateUrl: 'views/servicios-add.html',
+            templateUrl: 'views/Servicios-add.html',
             controller: 'ServiciosAddCtrl',
             backdrop: false,
             size: 'lg'
         });
         
         modalInstanceAdd.result.then(function (data) {
-            $scope.servicios.push(data.servicio);
-            $scope.message = data.message;
+            getServicios();
+            $scope.message = data;
         });
         
         $(event.currentTarget).removeClass('disabled');
@@ -34,7 +44,7 @@ angular.module('inexdeoAdminApp')
         $(event.currentTarget).prop('disabled', true);
         
         var modalInstanceEdit = $uibModal.open({
-            templateUrl: 'views/servicios-edit.html',
+            templateUrl: 'views/Servicios-edit.html',
             controller: 'ServiciosEditCtrl',
             backdrop: false,
             size: 'lg',
@@ -46,10 +56,8 @@ angular.module('inexdeoAdminApp')
         });
         
         modalInstanceEdit.result.then(function (data) {
-            ServiciosService.getAdmin(function(data) {
-                $scope.servicios = data.servicios;
-            });
-            $scope.message = data.message;
+            getServicios();
+            $scope.message = data;
         });
         
         $(event.currentTarget).removeClass('disabled');

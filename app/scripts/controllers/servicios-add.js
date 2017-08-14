@@ -1,50 +1,52 @@
 'use strict';
 
+/**
+ * @ngdoc function
+ * @name inexdeoAdminApp.controller:ServiciosAddCtrl
+ * @description
+ * # ServiciosAddCtrl
+ * Controller of the inexdeoAdminApp
+ */
 angular.module('inexdeoAdminApp')
 .controller('ServiciosAddCtrl', function ($scope, ServiciosService, $uibModalInstance, PagesService) {
-    $scope.servicio = {};
+    $scope.servcicio = {};
     $scope.methods = {};
     $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
     var tmp_path = $scope.tmp_path;
     $scope.loading = false;
     $scope.title_images = [];
-    $scope.servicio.portada = false;
+    $scope.servcicio.portada = false;
         
     $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.saveServicio = function(servicio, boton, urls_preview, brochure_preview, title_images, portada_preview) {
+    $scope.saveServicio = function(servcicio, boton, urls_preview, brochure_preview, title_images, portada_preview) {
         $('#' + boton).text('Guardando...');
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
-        console.log(servicio);
-        servicio.servicio_images = [];
+        
+        servcicio.servcicio_images = [];
         angular.forEach(urls_preview, function(value, key) {
-            servicio.servicio_images.push({
+            servcicio.servcicio_images.push({
                 url: value,
                 title: title_images[key]
             });
         });
         if (brochure_preview !== null) {
-            servicio.brochure = brochure_preview;
+            servcicio.brochure = brochure_preview;
         }
         if (portada_preview !== null) {
-            servicio.img_portada = portada_preview;
+            servcicio.img_portada = portada_preview;
         }
-        ServiciosService.save(servicio, function(data) {
+        ServiciosService.save(servcicio, function(data) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(data);
-        }, function(data) {
+        }, function (err) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
-            $uibModalInstance.close({
-                message: {
-                    type: 'error',
-                    text: 'Hubo un error. Código: ' + data.status + ' Mensaje: ' + data.statusText
-                }
-            });
+            $uibModalInstance.close(err.data);
         });
     };
     
@@ -114,13 +116,9 @@ angular.module('inexdeoAdminApp')
         fd.append('file', portada);
         
         ServiciosService.previewPortada(fd, function(data) {
-            if (data.message.type === 'success') {
-                $scope.portada_preview = data.filename;
-            } else if (data.message.type === 'error') {
-                $scope.portada_preview = null;
-            }
+            $scope.portada_preview = data.filename;
             $scope.loading = false;
-        }, function(data) {
+        }, function(err) {
             $scope.portada_preview = null;
             $scope.loading = false;
         });

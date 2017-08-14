@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * @ngdoc function
+ * @name inexdeoAdminApp.controller:ProyectosAddCtrl
+ * @description
+ * # ProyectosAddCtrl
+ * Controller of the inexdeoAdminApp
+ */
 angular.module('inexdeoAdminApp')
 .controller('ProyectosAddCtrl', function ($scope, ProyectosService, $uibModalInstance, PagesService) {
     $scope.proyecto = {};
@@ -18,7 +25,7 @@ angular.module('inexdeoAdminApp')
         $('#' + boton).text('Guardando...');
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
-        console.log(proyecto);
+        
         proyecto.proyecto_images = [];
         angular.forEach(urls_preview, function(value, key) {
             proyecto.proyecto_images.push({
@@ -36,15 +43,10 @@ angular.module('inexdeoAdminApp')
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(data);
-        }, function(data) {
+        }, function (err) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
-            $uibModalInstance.close({
-                message: {
-                    type: 'error',
-                    text: 'Hubo un error. Código: ' + data.status + ' Mensaje: ' + data.statusText
-                }
-            });
+            $uibModalInstance.close(err.data);
         });
     };
     
@@ -60,7 +62,7 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview = function(images, errFiles) {
-        $scope.loading_imagenes = true;
+        $scope.loading = true;
         var fd = new FormData();
         $scope.images = [];
         
@@ -81,7 +83,7 @@ angular.module('inexdeoAdminApp')
                 $scope.images.push(image);
                 title++;
             });
-            $scope.loading_imagenes = false;
+            $scope.loading = false;
             if (data.hasOwnProperty('message')) {
                 if (data.message.type === 'error') {
                     alert(data.message.text);
@@ -109,20 +111,16 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview_portada = function(portada, errFiles) {
-        $scope.loading_portada = true;
+        $scope.loading = true;
         var fd = new FormData();
         fd.append('file', portada);
         
         ProyectosService.previewPortada(fd, function(data) {
-            if (data.message.type === 'success') {
-                $scope.portada_preview = data.filename;
-            } else if (data.message.type === 'error') {
-                $scope.portada_preview = null;
-            }
-            $scope.loading_portada = false;
-        }, function(data) {
+            $scope.portada_preview = data.filename;
+            $scope.loading = false;
+        }, function(err) {
             $scope.portada_preview = null;
-            $scope.loading_portada = false;
+            $scope.loading = false;
         });
     };
 });

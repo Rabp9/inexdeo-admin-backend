@@ -1,50 +1,47 @@
-<form ng-submit="saveServicio(servicio, 'btnSaveServicio', urls_preview, brochure_preview, title_images)">
+<form ng-submit="saveServicio(servicio, 'btnSaveServicio', urls_preview, brochure_preview, title_images, portada_preview)">
     <div class="modal-header">
         <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Modificar Servicio</h4>
     </div>
     <div class="modal-body modal-body-overflow">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="txtTitle">Título</label>
                     <input id="txtTitle" class="form-control" type="text" ng-model="servicio.title" required />
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="txtSubtitle">Sub Título</label>
                     <input id="txtSubtitle" class="form-control" type="text" ng-model="servicio.subtitle" />
                 </div>
             </div>
-            <div class="col-sm-2">     
-                <div class="form-group">
-                    <label for="sltTipo">Tipo</label>
-                    <select id="sltTipo" class="form-control" required
-                        ng-options="option.type as option.description for option in [{type: 'P', description: 'Página'}, {type: 'L', description: 'Línea de servicio'}, {type: 'A', description: 'Área'}]" ng-model="servicio.type">
-                        <option value="">Selecciona uno</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label for="sltParent">Pertenece a</label>
-                    <select id="sltParent" class="form-control"
-                        ng-options="servicio.id as servicio.title for servicio in servicios_list" ng-model="servicio.parent_id">
-                        <option value="">Selecciona uno</option>
-                    </select>
-                </div>
-            </div>
         </div>
         <div class="form-group">
             <label for="txtaBody">Contenido</label>
-            <textarea id="txtaBody" class="form-control textarea-3x" ng-model="servicio.body" ui-tinymce="tinymceServiciosOptions"></textarea>
-            <input style="display: none;" id="flImagen" type="file" class="form-control" ngf-select="upload($file, $invalidFiles)" 
-            accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
+            <textarea id="txtaBody" class="form-control textarea-3x" ng-model="servicio.body" ui-tinymce="tinymceOptions"></textarea>
         </div>
         <div class="form-group">
             <label for="txtaResumen">Resumen</label>
-            <textarea id="txtaResumen" class="form-control textarea-2x" ng-model="servicio.resumen" required></textarea>
+            <textarea id="txtaResumen" class="form-control textarea-2x" ng-model="servicio.resumen" ui-tinymce="tinymceOptions"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="flPortada">Portada</label>
+            <input id="flPortada" type="file" class="form-control" ngf-select="preview_portada($file, $invalidFiles)" 
+                accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
+            <img ng-hide="portada_preview === undefined || portada_preview === null" class="img-responsive" ng-src="{{tmp_path}}/{{portada_preview}}" alt="imagen previa" />
+            <span ng-hide="portada_preview === undefined || portada_preview === null">Portada cargada correctamente</span>
+            <span ng-show="loading_portada">Cargando...</span>
+            <span ng-show="!loading && portada_preview === null">No fue posible cargar la Portada</span>
+            <span ng-hide="portada_preview === undefined || portada_preview === null"><!-- si la imagen cargo entonces definimos si se muestra o no-->
+        </div>
+        <div class="form-group" ng-hide="portada_preview === undefined || portada_preview === null">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="servicio.portada"> Mostrar Portada en Lista
+                </label>
+            </div>
         </div>
         <div class="form-group">
             <label for="flImagenesServicios">Imágenes</label>
@@ -65,7 +62,7 @@
             <span ng-show="!loading && brochure_preview === null">No fue posible cargar el Brochure</span>
         </div>
         <div ng-show="!loading && brochure_preview !== null">Link de Descarga
-            <a ng-href="{{path_location + 'Servicios/download/' + servicio.id }}" target="_blank"><span class="glyphicon glyphicon-list-alt"></span></a>
+            <a ng-href="{{path_location + 'servicios/download/' + servicio.id }}" target="_blank"><span class="glyphicon glyphicon-list-alt"></span></a>
         </div>
     </div>
     <div class="modal-footer">

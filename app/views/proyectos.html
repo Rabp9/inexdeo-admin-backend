@@ -2,16 +2,16 @@
     <li><a href="#">Inicio</a></li>
     <li>Proyectos</li>
 </ol>
-<div class="alert alert-dismissible" ng-class="{'alert-success': message.type === 'success', 'alert-danger': message.type === 'error'}" role="alert" ng-show="message.type !== undefined">
-    <button type="button" class="close" ng-click="message.type = undefined" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    {{ message.text }} 
+<div class="alert alert-dismissible" ng-class="{'alert-success': message.code === 200, 'alert-danger': message.code !== 200 }" role="alert" ng-show="message.code !== undefined">
+    <button type="button" class="close" ng-click="message.code = undefined" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{ message.message }} 
 </div>
 <h2>Proyectos</h2>
 <hr>
 <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
         <button type="button" class="btn btn-primary" ng-click="showProyectosAdd($event)"><span class="glyphicon glyphicon-plus"></span> Nuevo Proyecto</button>
-        <scrollable-table watch="proyectos" class="table-responsive">
+        <scrollable-table watch="Proyectos" class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                     <tr ng-hide="!loading"><td colspan="5">Cargando...</td></tr>
-                    <tr ng-show="!loading && proyectos.length === 0"><td colspan="5">No hay registros</td></tr>
+                    <tr ng-show="!loading && Proyectos.length === 0"><td colspan="5">No hay registros</td></tr>
                     <tr ng-class="{'danger': proyecto.estado_id === 2}" ng-repeat="proyecto in proyectos" row-id="{{ proyecto.id }}">
                         <td>{{ proyecto.id }}</td>
                         <td>{{ proyecto.title }}</td>

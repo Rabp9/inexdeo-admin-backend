@@ -1,28 +1,38 @@
 'use strict';
 
+/**
+ * @ngdoc function
+ * @name inexdeoAdminApp.controller:ProyectosCtrl
+ * @description
+ * # ProyectosCtrl
+ * Controller of the inexdeoAdminApp
+ */
 angular.module('inexdeoAdminApp')
 .controller('ProyectosCtrl', function ($scope, ProyectosService, $uibModal) {
     $scope.loading = true;
     
-    ProyectosService.getAdmin(function(data) {
-        $scope.proyectos = data.proyectos;
-        $scope.loading = false;
-    });
+    function getProyectos() {
+        ProyectosService.getAdmin(function(data) {
+            $scope.proyectos = data.proyectos;
+            $scope.loading = false;
+        });
+    }
+    getProyectos();
     
     $scope.showProyectosAdd = function(event) {
         $(event.currentTarget).addClass('disabled');
         $(event.currentTarget).prop('disabled', true);
         
         var modalInstanceAdd = $uibModal.open({
-            templateUrl: 'views/proyectos-add.html',
+            templateUrl: 'views/Proyectos-add.html',
             controller: 'ProyectosAddCtrl',
             backdrop: false,
             size: 'lg'
         });
         
         modalInstanceAdd.result.then(function (data) {
-            $scope.proyectos.push(data.proyecto);
-            $scope.message = data.message;
+            getProyectos();
+            $scope.message = data;
         });
         
         $(event.currentTarget).removeClass('disabled');
@@ -34,7 +44,7 @@ angular.module('inexdeoAdminApp')
         $(event.currentTarget).prop('disabled', true);
         
         var modalInstanceEdit = $uibModal.open({
-            templateUrl: 'views/proyectos-edit.html',
+            templateUrl: 'views/Proyectos-edit.html',
             controller: 'ProyectosEditCtrl',
             backdrop: false,
             size: 'lg',
@@ -46,17 +56,15 @@ angular.module('inexdeoAdminApp')
         });
         
         modalInstanceEdit.result.then(function (data) {
-            ProyectosService.getAdmin(function(data) {
-                $scope.proyectos = data.proyectos;
-            });
-            $scope.message = data.message;
+            getProyectos();
+            $scope.message = data;
         });
         
         $(event.currentTarget).removeClass('disabled');
         $(event.currentTarget).prop('disabled', false);
     };
     
-    $scope.removeProducto = function(cliente, event) {
+    $scope.removeProyecto = function(cliente, event) {
         $(event.currentTarget).addClass('disabled');
         $(event.currentTarget).prop('disabled', true);
         
