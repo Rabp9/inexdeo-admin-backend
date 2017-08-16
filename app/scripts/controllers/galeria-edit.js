@@ -23,7 +23,6 @@ angular.module('inexdeoAdminApp')
         AlbumesService.get({id: album.id}, function(data) {
             $scope.album = data.album;
            
-            
             start = $scope.album.imagenes.length;    
             angular.forEach($scope.album.imagenes, function(value, key) {
                 $scope.images.push({
@@ -53,7 +52,7 @@ angular.module('inexdeoAdminApp')
         angular.forEach(urls_preview, function(value, key) {
             album.imagenes.push({
                 url: value,
-                decripcion: title_images[start + key]
+                descripcion: title_images[start + key]
             });
         });
         

@@ -20,7 +20,7 @@
                  images="images" on-delete="delete(img, cb)" methods="methods">
             </div>
             <input class="form-control" type="text" placeholder="Tìtulo de Imagen {{ $index + 1 }}" 
-                ng-repeat="image in images" ng-model="title_images[$index]" ng-readonly="{{ image.title !== undefined }}">
+                ng-repeat="image in images" ng-model="title_images[$index]" ng-readonly="{{ image.descripcion !== undefined }}">
         </div>
     </div>
     <div class="modal-footer">
