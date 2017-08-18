@@ -29,7 +29,7 @@
         <div class="form-group">
             <label for="flPortada">Portada</label>
             <input id="flPortada" type="file" class="form-control" ngf-select="preview_portada($file, $invalidFiles)" 
-                accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
+                accept="image/*" ngf-max-height="15000" ngf-max-size="10MB"/>
             <img ng-hide="portada_preview === undefined || portada_preview === null" class="img-responsive" ng-src="{{tmp_path}}/{{portada_preview}}" alt="imagen previa" />
             <span ng-hide="portada_preview === undefined || portada_preview === null">Portada cargada correctamente</span>
             <span ng-show="loading_portada">Cargando...</span>
@@ -45,7 +45,7 @@
         </div>
         <div class="form-group">
             <label for="flImagenesServicios">Imágenes</label>
-            <input id="flImagenesServicios" type="file" class="form-control"  ngf-multiple="true" ngf-select="preview($files, $invalidFiles)" accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
+            <input id="flImagenesServicios" type="file" class="form-control"  ngf-multiple="true" ngf-select="preview($files, $invalidFiles)" accept="image/*" ngf-max-height="15000" ngf-max-size="10MB"/>
             <span ng-show="loading">Cargando...</span>
             <div ng-image-gallery
                  images="images" on-delete="delete(img, cb)" methods="methods">
@@ -56,7 +56,7 @@
         <div class="form-group">
             <label for="flBrochure">Brochure</label>
             <input id="flBrochure" type="file" class="form-control" ngf-select="preview_brochure($file, $invalidFiles)" 
-                accept="application/pdf" ngf-max-height="5000" ngf-max-size="10MB"/>
+                accept="application/pdf" ngf-max-height="15000" ngf-max-size="10MB"/>
             <span ng-hide="brochure_preview === undefined || brochure_preview === null">Brochure cargado correctamente<br></span>
             <span ng-show="loading">Cargando...</span>
             <span ng-show="!loading && brochure_preview === null">No fue posible cargar el Brochure</span>
