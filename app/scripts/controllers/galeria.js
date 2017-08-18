@@ -70,7 +70,7 @@ angular.module('inexdeoAdminApp')
         
         if (confirm('¿Desea eliminar este álbum?')) {
             AlbumesService.remove({id: album.id}, function(data) {
-                $scope.message = data.message; 
+                $scope.message = data; 
                 $scope.loading = true;
                 $scope.albumes = [];
                 AlbumesService.getAdmin(function(data) {
