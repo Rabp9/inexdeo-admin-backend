@@ -15,7 +15,7 @@ angular.module('inexdeoAdminApp')
     $scope.servicio = {};
     var start = 0;
     var changed = false;
-    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/Servicios'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/servicios'; 
     
     $scope.tinymceServiciosOptions = {
         toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | fontsizeselect | fontselect ",
@@ -38,7 +38,7 @@ angular.module('inexdeoAdminApp')
             start = $scope.servicio.servicio_images.length;    
             angular.forEach($scope.servicio.servicio_images, function(value, key) {
                 $scope.images.push({
-                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'Servicios' + '/' + value.url,
+                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'servicios' + '/' + value.url,
                     id: value.id,
                     deletable : true,
                     title: value.title

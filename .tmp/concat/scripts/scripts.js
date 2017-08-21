@@ -862,7 +862,7 @@ angular.module('inexdeoAdminApp')
         $(event.currentTarget).prop('disabled', true);
         
         var modalInstanceAdd = $uibModal.open({
-            templateUrl: 'views/Servicios-add.html',
+            templateUrl: 'views/servicios-add.html',
             controller: 'ServiciosAddCtrl',
             backdrop: false,
             size: 'lg'
@@ -882,7 +882,7 @@ angular.module('inexdeoAdminApp')
         $(event.currentTarget).prop('disabled', true);
         
         var modalInstanceEdit = $uibModal.open({
-            templateUrl: 'views/Servicios-edit.html',
+            templateUrl: 'views/servicios-edit.html',
             controller: 'ServiciosEditCtrl',
             backdrop: false,
             size: 'lg',
@@ -1065,7 +1065,7 @@ angular.module('inexdeoAdminApp')
     $scope.servicio = {};
     var start = 0;
     var changed = false;
-    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/Servicios'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/servicios'; 
     
     $scope.tinymceServiciosOptions = {
         toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | fontsizeselect | fontselect ",
@@ -1088,7 +1088,7 @@ angular.module('inexdeoAdminApp')
             start = $scope.servicio.servicio_images.length;    
             angular.forEach($scope.servicio.servicio_images, function(value, key) {
                 $scope.images.push({
-                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'Servicios' + '/' + value.url,
+                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'servicios' + '/' + value.url,
                     id: value.id,
                     deletable : true,
                     title: value.title
@@ -1258,7 +1258,7 @@ angular.module('inexdeoAdminApp')
         $(event.currentTarget).prop('disabled', true);
         
         var modalInstanceAdd = $uibModal.open({
-            templateUrl: 'views/Proyectos-add.html',
+            templateUrl: 'views/proyectos-add.html',
             controller: 'ProyectosAddCtrl',
             backdrop: false,
             size: 'lg'
@@ -1278,7 +1278,7 @@ angular.module('inexdeoAdminApp')
         $(event.currentTarget).prop('disabled', true);
         
         var modalInstanceEdit = $uibModal.open({
-            templateUrl: 'views/Proyectos-edit.html',
+            templateUrl: 'views/proyectos-edit.html',
             controller: 'ProyectosEditCtrl',
             backdrop: false,
             size: 'lg',
@@ -1461,7 +1461,7 @@ angular.module('inexdeoAdminApp')
     $scope.proyecto = {};
     var start = 0;
     var changed = false;
-    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/Proyectos'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/proyectos'; 
     
     $scope.tinymceProyectosOptions = {
         toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | fontsizeselect | fontselect ",
@@ -1484,7 +1484,7 @@ angular.module('inexdeoAdminApp')
             start = $scope.proyecto.proyecto_images.length;    
             angular.forEach($scope.proyecto.proyecto_images, function(value, key) {
                 $scope.images.push({
-                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'Proyectos' + '/' + value.url,
+                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'proyectos' + '/' + value.url,
                     id: value.id,
                     deletable : true,
                     title: value.title
@@ -3448,9 +3448,9 @@ angular.module('inexdeoAdminApp')
                     return 'http://localhost:8000/inexdeo-backend/';
                 case 'admin.inexdeo.robertobocanegra.com':
                     return 'http://inexdeo.robertobocanegra.com/api/';
-                case 'iedsa.com.pe':
+                case 'admin.iedsa.com.pe':
                     return 'http://iedsa.com.pe/api/';
-                case 'www.iedsa.com.pe':
+                case 'www.admin.iedsa.com.pe':
                     return 'http://iedsa.com.pe/api/';
             }
         }

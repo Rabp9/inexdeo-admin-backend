@@ -15,7 +15,7 @@ angular.module('inexdeoAdminApp')
     $scope.proyecto = {};
     var start = 0;
     var changed = false;
-    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/Proyectos'; 
+    $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/proyectos'; 
     
     $scope.tinymceProyectosOptions = {
         toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | fontsizeselect | fontselect ",
@@ -38,7 +38,7 @@ angular.module('inexdeoAdminApp')
             start = $scope.proyecto.proyecto_images.length;    
             angular.forEach($scope.proyecto.proyecto_images, function(value, key) {
                 $scope.images.push({
-                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'Proyectos' + '/' + value.url,
+                    url: angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'proyectos' + '/' + value.url,
                     id: value.id,
                     deletable : true,
                     title: value.title

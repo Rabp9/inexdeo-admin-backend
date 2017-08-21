@@ -24,7 +24,7 @@ angular.module('inexdeoAdminApp')
         $(event.currentTarget).prop('disabled', true);
         
         var modalInstanceAdd = $uibModal.open({
-            templateUrl: 'views/Proyectos-add.html',
+            templateUrl: 'views/proyectos-add.html',
             controller: 'ProyectosAddCtrl',
             backdrop: false,
             size: 'lg'
@@ -44,7 +44,7 @@ angular.module('inexdeoAdminApp')
         $(event.currentTarget).prop('disabled', true);
         
         var modalInstanceEdit = $uibModal.open({
-            templateUrl: 'views/Proyectos-edit.html',
+            templateUrl: 'views/proyectos-edit.html',
             controller: 'ProyectosEditCtrl',
             backdrop: false,
             size: 'lg',
