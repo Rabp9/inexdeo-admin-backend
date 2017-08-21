@@ -9,16 +9,13 @@
  */
 angular.module('inexdeoAdminApp')
 .controller('GaleriaEditCtrl', function ($scope, album, $uibModalInstance, 
-    AlbumesService, $q, PagesService) {
+    AlbumesService, $q) {
         
     $scope.loading = false;
     $scope.album = {};
     var start = 0;
-    var changed = false;
     $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/galeria'; 
         
-    init();
-    
     function init() {
         AlbumesService.get({id: album.id}, function(data) {
             $scope.album = data.album;
@@ -35,6 +32,9 @@ angular.module('inexdeoAdminApp')
             });
         });
     }
+    
+    init();
+    
     $scope.images = [];
     $scope.methods = {};
     $scope.title_images = [];
@@ -92,6 +92,8 @@ angular.module('inexdeoAdminApp')
         $scope.loading = true;
         var fd = new FormData();
         
+        $scope.images = $scope.images.slice(0, start);
+        
         angular.forEach(images, function(value, key) {
             fd.append('files[]', value);
         });
@@ -99,7 +101,7 @@ angular.module('inexdeoAdminApp')
         AlbumesService.preview(fd, function(data) {
             $scope.loading = true;
             $scope.urls_preview = data.filenames;
-            var title = 1;
+            var title = 'a';
             angular.forEach(data.filenames, function(value, key) {
                 var image = {
                     url: tmp_path + value,
@@ -108,7 +110,7 @@ angular.module('inexdeoAdminApp')
                 };
                 
                 $scope.images.push(image);
-                title++;
+                title = nextChar(title);
             });
             $scope.loading = false;
             if (data.hasOwnProperty('message')) {
@@ -118,5 +120,9 @@ angular.module('inexdeoAdminApp')
             }
         });
     };
+    
+    function nextChar(c) {
+        return String.fromCharCode(c.charCodeAt(0) + 1);
+    }
     
 });

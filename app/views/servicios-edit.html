@@ -61,7 +61,7 @@
             <span ng-show="loading">Cargando...</span>
             <span ng-show="!loading && brochure_preview === null">No fue posible cargar el Brochure</span>
         </div>
-        <div ng-show="!loading && brochure_preview !== null">Link de Descarga
+        <div ng-show="!loading && servicio.brochure !== null">Link de Descarga
             <a ng-href="{{path_location + 'servicios/download/' + servicio.id }}" target="_blank"><span class="glyphicon glyphicon-list-alt"></span></a>
         </div>
     </div>

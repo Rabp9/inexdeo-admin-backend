@@ -10,8 +10,9 @@
         </div>
         <div class="form-group">
             <label for="txtaValor">Valor</label>
-            <textarea id="txtaValor" class="form-control" ng-model="info.value" ui-tinymce="tinymceOptions"
+            <textarea ng-if="info.tipo === 'p'" id="txtaValor" class="form-control" ng-model="info.value" ui-tinymce="tinymceOptions"
                 style="height: 250px;"></textarea>
+            <textarea ng-if="info.tipo === 't'" id="txtaValor" class="form-control" ng-model="info.value" style="height: 250px;"></textarea>
         </div>
     </div>
     <div class="modal-footer">
