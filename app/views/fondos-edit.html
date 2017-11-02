@@ -10,6 +10,8 @@
         </div>
         <div class="form-group">
             <label for="flValor">Imagen</label>
+                {{ fondo_preview | json }}<br>
+                {{ loading_fondo | json }}
             <input id="flValor" type="file" class="form-control" ngf-select="preview_fondo($file, $invalidFiles)" 
                 accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
             <img ng-hide="fondo_preview === undefined || fondo_preview === null" class="img-responsive" ng-src="{{tmp_path}}/{{fondo_preview}}" alt="imagen previa" />

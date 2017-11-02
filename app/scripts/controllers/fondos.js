@@ -9,7 +9,7 @@
  */
 angular.module('inexdeoAdminApp')
 .controller('FondosCtrl', function ($scope, InfosService, $uibModal) {
-    var search = ['bg_contactanos', 'bg_hero', 'bg_quienes_somos', 'bg_historia'];
+    var search = ['bg_quienes_somos', 'bg_contactanos', 'bg_mision', 'bg_historia', 'bg_hero'];
     
     $scope.loading = true;
     
