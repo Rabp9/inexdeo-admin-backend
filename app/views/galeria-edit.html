@@ -14,7 +14,10 @@
         </div>
         <div class="form-group">
             <label for="flImagenesAlbumes">Imágenes</label>
-            <input id="flImagenesAlbumes" type="file" class="form-control"  ngf-multiple="true" ngf-select="preview($files, $invalidFiles)" accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
+            <input id="flImagenesAlbumes" type="file" class="form-control" ngf-multiple="true" 
+                ngf-select="preview($files, $invalidFiles)" accept="image/*"
+                ngf-max-height="5000" ngf-max-size="10MB"/>
+            <p class="help-block">(Las imágenes no pueden ser mayor a 10MB)</p>
             <span ng-show="loading">Cargando...</span>
             <div ng-image-gallery
                  images="images" on-delete="delete(img, cb)" methods="methods">

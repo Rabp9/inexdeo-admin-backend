@@ -30,11 +30,11 @@
             <label for="flPortada">Portada</label>
             <input id="flPortada" type="file" class="form-control" ngf-select="preview_portada($file, $invalidFiles)" 
                 accept="image/*" ngf-max-height="15000" ngf-max-size="10MB"/>
+            <p class="help-block">(La imagen no puede ser mayor a 10MB)</p>
             <img ng-hide="portada_preview === undefined || portada_preview === null" class="img-responsive" ng-src="{{tmp_path}}/{{portada_preview}}" alt="imagen previa" />
-            <span ng-hide="portada_preview === undefined || portada_preview === null">Portada cargada correctamente</span>
-            <span ng-show="loading_portada">Cargando...</span>
-            <span ng-show="!loading && portada_preview === null">No fue posible cargar la Portada</span>
-            <span ng-hide="portada_preview === undefined || portada_preview === null"><!-- si la imagen cargo entonces definimos si se muestra o no-->
+            <span ng-show="portada_preview !== null && !loading_portada"><br>Fondo cargado correctamente</span>
+            <span ng-show="loading_portada"><br>Cargando...</span>
+            <span ng-show="!loading_portada && portada_preview === null"><br>No fue posible cargar el Fondo</span>
         </div>
         <div class="form-group" ng-hide="portada_preview === undefined || portada_preview === null">
             <div class="checkbox">
@@ -45,7 +45,10 @@
         </div>
         <div class="form-group">
             <label for="flImagenesProyectos">Imágenes</label>
-            <input id="flImagenesProyectos" type="file" class="form-control"  ngf-multiple="true" ngf-select="preview($files, $invalidFiles)" accept="image/*" ngf-max-height="15000" ngf-max-size="10MB"/>
+            <input id="flImagenesProyectos" type="file" class="form-control"  ngf-multiple="true" 
+                ngf-select="preview($files, $invalidFiles)" accept="image/*" 
+                ngf-max-height="15000" ngf-max-size="10MB"/>
+            <p class="help-block">(Las imágenes no pueden ser mayor a 10MB)</p>
             <span ng-show="loading">Cargando...</span>
             <div ng-image-gallery
                  images="images" on-delete="delete(img, cb)" methods="methods">

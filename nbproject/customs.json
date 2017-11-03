@@ -1,6 +1,9 @@
 {
     "elements": {},
     "attributes": {
+        "angular-validator": {
+            "context": "form"
+        },
         "ngf-select": {
             "context": "input"
         }

@@ -12,6 +12,7 @@ angular.module('inexdeoAdminApp')
     ProductosService, $q) {
         
     $scope.loading = false;
+    $scope.loading_portada = false;
     $scope.producto = {};
     var start = 0;
     var changed = false;
@@ -111,6 +112,12 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview = function(images, errFiles) {
+        if (errFiles.length) {
+            if (errFiles[0].$errorMessages.maxSize) {
+                alert('Alguna de las imágenes sobrepasa los 10 MB');
+                return;
+            }
+        }
         $scope.loading = true;
         var fd = new FormData();
         
@@ -162,18 +169,25 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview_portada = function(portada, errFiles) {
+        if (errFiles.length) {
+            if (errFiles[0].$errorMessages.maxSize) {
+                alert('La imagen sobrepasa los 10 MB');
+                return;
+            }
+        }
+        $scope.loading_portada = true;
         $scope.loading = true;
         var fd = new FormData();
         fd.append('file', portada);
         
         ProductosService.previewPortada(fd, function(data) {
             $scope.portada_preview = data.filename;
-            $scope.loading = false;
+            $scope.loading_portada = false;
             $scope.tmp_path = tmp_path;
             changed = true;
         }, function(err) {
             $scope.portada_preview = null;
-            $scope.loading = false;
+            $scope.loading_portada = false;
         });
     };
     

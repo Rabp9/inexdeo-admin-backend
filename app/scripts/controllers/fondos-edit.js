@@ -14,6 +14,7 @@ angular.module('inexdeoAdminApp')
         $scope.fondo = $.extend(true, {}, fondo);
         $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'img' + '/' + 'bg' + '/';
         $scope.fondo_preview = fondo.value;
+        $scope.loading_fondo = false;
     }
     
     init();
@@ -42,6 +43,12 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview_fondo = function(fondo, errFiles) {
+        if (errFiles.length) {
+            if (errFiles[0].$errorMessages.maxSize) {
+                alert('La imagen sobrepasa los 10 MB');
+                return;
+            }
+        }
         $scope.tmp_path = angular.module('inexdeoAdminApp').path_location + 'tmp' + '/';
         $scope.loading_fondo = true;
         var fd = new FormData();

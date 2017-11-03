@@ -10,14 +10,13 @@
         </div>
         <div class="form-group">
             <label for="flValor">Imagen</label>
-                {{ fondo_preview | json }}<br>
-                {{ loading_fondo | json }}
             <input id="flValor" type="file" class="form-control" ngf-select="preview_fondo($file, $invalidFiles)" 
                 accept="image/*" ngf-max-height="5000" ngf-max-size="10MB"/>
+            <p class="help-block">(La imagen no puede ser mayor a 10MB)</p>
             <img ng-hide="fondo_preview === undefined || fondo_preview === null" class="img-responsive" ng-src="{{tmp_path}}/{{fondo_preview}}" alt="imagen previa" />
-            <span ng-hide="(fondo_preview === undefined || fondo_preview === null) && loading_fondo">Fondo cargado correctamente</span>
-            <span ng-show="loading_fondo">Cargando...</span>
-            <span ng-show="!loading && fondo_preview === null">No fue posible cargar el Fondo</span>
+            <span ng-show="fondo_preview !== null && !loading"><br>Fondo cargado correctamente</span>
+            <span ng-show="loading_fondo"><br>Cargando...</span>
+            <span ng-show="!loading && fondo_preview === null"><br>No fue posible cargar el Fondo</span>
         </div>
     </div>
     <div class="modal-footer">

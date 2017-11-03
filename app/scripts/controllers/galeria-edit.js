@@ -89,6 +89,12 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview = function(images, errFiles) {
+        if (errFiles.length) {
+            if (errFiles[0].$errorMessages.maxSize) {
+                alert('Alguna de las imágenes sobrepasa los 10 MB');
+                return;
+            }
+        }
         $scope.loading = true;
         var fd = new FormData();
         

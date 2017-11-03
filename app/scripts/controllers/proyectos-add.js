@@ -16,6 +16,7 @@ angular.module('inexdeoAdminApp')
     $scope.loading = false;
     $scope.title_images = [];
     $scope.proyecto.portada = false;
+    $scope.loading_portada = false;
         
     $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');
@@ -62,6 +63,12 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview = function(images, errFiles) {
+        if (errFiles.length) {
+            if (errFiles[0].$errorMessages.maxSize) {
+                alert('Alguna de las imágenes sobrepasa los 10 MB');
+                return;
+            }
+        }
         $scope.loading = true;
         var fd = new FormData();
         $scope.images = [];
@@ -111,16 +118,22 @@ angular.module('inexdeoAdminApp')
     };
     
     $scope.preview_portada = function(portada, errFiles) {
-        $scope.loading = true;
+        if (errFiles.length) {
+            if (errFiles[0].$errorMessages.maxSize) {
+                alert('La imagen sobrepasa los 10 MB');
+                return;
+            }
+        }
+        $scope.loading_portada = true;
         var fd = new FormData();
         fd.append('file', portada);
         
         ProyectosService.previewPortada(fd, function(data) {
             $scope.portada_preview = data.filename;
-            $scope.loading = false;
+            $scope.loading_portada = false;
         }, function(err) {
             $scope.portada_preview = null;
-            $scope.loading = false;
+            $scope.loading_portada = false;
         });
     };
 });
