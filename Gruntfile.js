@@ -545,6 +545,6 @@ module.exports = function (grunt) {
     'newer:jscs',
     /*'test',*/
     'build',
-    'ftp-deploy'
+/*    'ftp-deploy'*/
   ]);
 };
