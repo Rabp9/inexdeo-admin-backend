@@ -1,5 +1,7 @@
 {
-    "elements": {},
+    "elements": {
+        "scrollable-table": {}
+    },
     "attributes": {
         "angular-validator": {
             "context": "form"

@@ -6,19 +6,22 @@
     <div class="modal-body">
         <div class="form-group">
             <label for="txtData">Dato</label>
-            <input id="txtData" class="form-control" type="text" ng-model="info.data" readonly />
+            <input id="txtData" class="form-control" type="text" ng-model="info.data" name="infoData" readonly />
         </div>
         <div class="form-group">
             <label for="txtaValor">Valor</label>
+            
             <textarea ng-if="info.tipo === 'p'" id="txtaValor" class="form-control" ng-model="info.value" ui-tinymce="tinymceOptions"
-                style="height: 250px;"></textarea>
-            <textarea ng-if="info.tipo === 't'" id="txtaValor" class="form-control" ng-model="info.value" style="height: 250px;"></textarea>
+                style="height: 250px;" name="infoValuep"></textarea>
+                
+            <textarea ng-if="info.tipo === 't'" id="txtaValor" class="form-control" ng-model="info.value" style="height: 250px;"
+                name="infoValuet"></textarea>
             
             <input ng-if="info.tipo === 'f'" id="txtaValor" type="file" class="form-control" ngf-select="preview_file($file, $invalidFiles)" 
-                accept="application/pdf" ngf-max-height="15000" ngf-max-size="10MB"/>
+                accept="application/pdf" ngf-max-size="10MB" name="infoValuef"/>
             <span ng-if="info.tipo === 'f'" ng-hide="file_preview === undefined || file_preview === null">Archivo cargado correctamente<br></span>
             <span ng-if="info.tipo === 'f'" ng-show="loading">Cargando...</span>
-            <span ng-if="info.tipo === 'f'" ng-show="!loading && file_preview === null">No fue posible cargar el Brochure</span>
+            <span ng-if="info.tipo === 'f'" ng-show="!loading && file_preview === null">No fue posible cargar el Archivo</span>
         </div>
         <div ng-if="info.tipo === 'f'" ng-show="!loading && info.value !== null">Link de Descarga
             <a ng-href="{{path_location + 'infos/download/' + info.id }}" target="_blank"><span class="glyphicon glyphicon-list-alt"></span></a>

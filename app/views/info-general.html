@@ -2,9 +2,9 @@
     <li><a href="#">Inicio</a></li>
     <li>Información General</li>
 </ol>
-<div class="alert alert-dismissible" ng-class="{'alert-success': message.type === 'success', 'alert-danger': message.type === 'error'}" role="alert" ng-show="message.type !== undefined">
-    <button type="button" class="close" ng-click="message.type = undefined" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    {{ message.text }} 
+<div class="alert alert-dismissible" ng-class="{'alert-success': message.code === 200, 'alert-danger': message.code !== 200 }" role="alert" ng-show="message.code !== undefined">
+    <button type="button" class="close" ng-click="message.code = undefined" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {{ message.message }} 
 </div>
 <h2>Información General</h2>
 <hr>

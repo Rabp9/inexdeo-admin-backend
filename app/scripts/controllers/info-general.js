@@ -41,7 +41,7 @@ angular.module('inexdeoAdminApp')
             InfosService.getDataByData(search, function(data) {
                 $scope.infos = data.infos;
             });
-            $scope.message = data.message;
+            $scope.message = data;
         });
     };
 });

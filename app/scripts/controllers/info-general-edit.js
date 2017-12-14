@@ -20,36 +20,35 @@ angular.module('inexdeoAdminApp')
         $('#' + boton).addClass('disabled');
         $('#' + boton).prop('disabled', true);
         
+        if ($scope.file_preview !== null) {
+            info.value = $scope.file_preview;
+        }
         InfosService.save(info, function(data) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
             $uibModalInstance.close(data);
-        }, function(data) {
+        }, function(err) {
             $('#' + boton).removeClass('disabled');
             $('#' + boton).prop('disabled', false);
-            $uibModalInstance.close({
-                message: {
-                    type: 'error',
-                    text: 'Hubo un error. Código: ' + data.status + ' Mensaje: ' + data.statusText
-                }
-            });
+            $uibModalInstance.close(err.data);
         });
     };
     
-    
     $scope.preview_file = function(file, errFiles) {
+        if (errFiles.length) {
+            if (errFiles[0].$errorMessages.maxSize) {
+                alert('El archivo supera los 10 MB');
+                return;
+            }
+        }
         $scope.loading = true;
         var fd = new FormData();
         fd.append('file', file);
         
         InfosService.previewFile(fd, function(data) {
-            if (data.message.type === 'success') {
-                $scope.file_preview = data.filename;
-            } else if (data.message.type === 'error') {
-                $scope.file_preview = null;
-            }
+            $scope.file_preview = data.filename;
             $scope.loading = false;
-        }, function(data) {
+        }, function(err) {
             $scope.file_preview = null;
             $scope.loading = false;
         });
