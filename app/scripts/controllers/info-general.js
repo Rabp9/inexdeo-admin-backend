@@ -10,7 +10,8 @@
 angular.module('inexdeoAdminApp')
 .controller('InfoGeneralCtrl', function ($scope, InfosService, $uibModal) {
     var search = ['mision', 'vision', 'historia', 'promo_inexdeo', 'quienes_somos', 
-        'facebook_link', 'email', 'telf', 'direccion', 'productos_mensaje', 'servicios_mensaje', 'proyectos_mensaje', 'video'];
+        'facebook_link', 'email', 'telf', 'direccion', 'productos_mensaje', 'servicios_mensaje', 
+        'proyectos_mensaje', 'video', 'brochure'];
     
     $scope.loading = true;
     

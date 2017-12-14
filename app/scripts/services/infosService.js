@@ -30,7 +30,13 @@ angular.module('inexdeoAdminApp')
         },
         saveFondo: {
             method: 'POST',
-            url: EnvService.getHost() + 'infos/saveFondo.json',
+            url: EnvService.getHost() + 'infos/saveFondo.json'
+        },
+        previewFile: {
+            method: 'POST',
+            url: EnvService.getHost() + 'infos/previewFile/.json',
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
         }
     });
 });

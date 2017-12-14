@@ -35,4 +35,23 @@ angular.module('inexdeoAdminApp')
             });
         });
     };
+    
+    
+    $scope.preview_file = function(file, errFiles) {
+        $scope.loading = true;
+        var fd = new FormData();
+        fd.append('file', file);
+        
+        InfosService.previewFile(fd, function(data) {
+            if (data.message.type === 'success') {
+                $scope.file_preview = data.filename;
+            } else if (data.message.type === 'error') {
+                $scope.file_preview = null;
+            }
+            $scope.loading = false;
+        }, function(data) {
+            $scope.file_preview = null;
+            $scope.loading = false;
+        });
+    };
 });
